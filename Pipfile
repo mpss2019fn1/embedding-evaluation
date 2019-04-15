@@ -8,6 +8,9 @@ verify_ssl = true
 [packages]
 requests = "*"
 gensim = "*"
+numpy = "*"
+tqdm = "*"
+scipy = "*"
 
 [requires]
 python_version = "3.7"
