@@ -1,0 +1,5 @@
+SELECT ?a ?b WHERE {
+  ?a wdt:P169 ?b;
+    wdt:P1128 ?employees.
+  FILTER(?employees > 100000 )
+}
