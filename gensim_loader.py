@@ -2,6 +2,7 @@ from gensim.models.doc2vec import Doc2Vec
 from wikidata2wikipedia import WikidataEntry
 import numpy as np
 
+
 class GensimLoader:
 
     def __init__(self, model_file):
@@ -13,7 +14,6 @@ class GensimLoader:
             return self.model[wikidata_entry.tag]
         except KeyError:
             return np.zeros(self.model.vector_size)
-
 
 
 if __name__ == '__main__':
