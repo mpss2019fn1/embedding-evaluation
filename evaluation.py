@@ -18,12 +18,12 @@ def difference_vector(vec_loader, entity1, entity2):
 
 
 def compute_vec_similarity(vectors):
-    similarity_sum = 0
+    similarity_values = []
     for a, b in combinations(vectors, 2):
         similarity = scipy.spatial.distance.cosine(a, b)
         if not np.isnan(similarity):
-            similarity_sum += similarity
-    return similarity_sum
+            similarity_values.append(similarity)
+    return np.mean(similarity_values)
 
 
 def main():
