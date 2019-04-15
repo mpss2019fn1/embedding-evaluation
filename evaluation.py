@@ -1,14 +1,9 @@
+import argparse
+import numpy as np
 from csv import DictReader
 from pathlib import Path
-from itertools import combinations
 from gensim_loader import GensimLoader
-import numpy as np
-import scipy
 from tqdm import tqdm
-
-query_result_directory = Path('query_results')
-embedding_file = Path('')
-difference_vector_directory = Path('difference_vectors')
 
 
 def difference_vector(vec_loader, entity1, entity2):
@@ -18,17 +13,22 @@ def difference_vector(vec_loader, entity1, entity2):
 
 
 def compute_vec_similarity(vectors):
-    similarity_values = []
-    for a, b in combinations(vectors, 2):
-        similarity = scipy.spatial.distance.cosine(a, b)
-        if not np.isnan(similarity):
-            similarity_values.append(similarity)
-    return np.mean(similarity_values)
+    matrix = np.array(vectors)
+    dot_products = matrix.dot(matrix.T)
+    norms = np.array([np.linalg.linalg.norm(matrix, axis=1)]) * np.array([np.linalg.linalg.norm(matrix, axis=1)]).T
+
+    # if entry is 0/0 ignore entry and set as nan.
+    with np.errstate(divide='ignore', invalid='ignore'):
+        cosine_similarity = dot_products / norms
+    cosine_distance = 1 - cosine_similarity
+
+    # ignore all values set to nan for mean calc.
+    return np.nanmean(cosine_distance)
 
 
-def main():
-    vec_loader = GensimLoader('doc2vec.binary.model')
-    for query_result_file in query_result_directory.iterdir():
+def main(args):
+    vec_loader = GensimLoader(args.embedding_file)
+    for query_result_file in args.query_result_directory.iterdir():
         with query_result_file.open() as f:
             csv_reader = DictReader(f)
             vec_diffs = [difference_vector(vec_loader, row['a'].split('/Q')[-1], row['b'].split('/Q')[-1]) for row in
@@ -38,4 +38,24 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "-query_result_directory",
+        type=Path,
+        help="Path to the query result directory",
+        default=Path(__file__).absolute().parent / "query_results",
+    )
+    parser.add_argument(
+        "-difference_vector_directory",
+        type=Path,
+        help="Path to the difference vectors directory",
+        default=Path(__file__).absolute().parent / "difference_vectors",
+    )
+    parser.add_argument(
+        "-embedding_file",
+        type=str,
+        help="Path to the embedding file directory",
+        default="doc2vec.binary.model",
+    )
+    args = parser.parse_args()
+    main(args)
