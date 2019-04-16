@@ -1,0 +1,8 @@
+SELECT ?a ?b WHERE {
+  ?a wdt:P106 ?sport.
+  ?sport wdt:P279 wd:Q2066131.
+  ?a wdt:P1532 ?b.
+  ?a wdt:P569 ?date_of_birth.
+  FILTER( year(?date_of_birth) > 1900)
+  FILTER NOT EXISTS{ ?a wdt:P570 ?date_of_death }
+}

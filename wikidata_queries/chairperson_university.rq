@@ -1,0 +1,12 @@
+SELECT ?a ?b WHERE {
+  ?b wdt:P31 wd:Q3918;
+    wdt:P488 ?a.
+}
+
+SELECT ?a ?b WHERE {
+  # {?b wdt:P31 wd:PQ3918} UNION {?b wdt:P279 wd:PQ3918}.
+  ?b
+  VALUES ?is {wdt:P31 wdt:P279}.
+  ?b ?is wd:Q3918.
+  ?b wdt:P488 ?a.
+}

@@ -1,0 +1,7 @@
+SELECT ?a ?b WHERE {
+  ?a p:P31 ?capitalStat.
+  ?capitalStat ps:P31 wd:Q5119.
+  ?a wdt:P1376 ?b.
+  ?b wdt:P31 wd:Q3624078.
+  FILTER NOT EXISTS {?capitalStat pq:P582 ?x}
+}

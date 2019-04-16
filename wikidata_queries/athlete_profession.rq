@@ -1,0 +1,4 @@
+SELECT ?a ?b WHERE {
+  ?a wdt:P106 ?b.
+  ?b wdt:P279 wd:Q2066131.
+}
