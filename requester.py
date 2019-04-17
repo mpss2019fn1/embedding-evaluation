@@ -1,24 +1,16 @@
-import requests
 import argparse
 from pathlib import Path
-from csv import DictWriter
 
-
-def query_wikidata(args, name, query):
-    wikidata_query_endpoint = "https://query.wikidata.org/sparql"
-    r = requests.get(wikidata_query_endpoint, params={"format": "json", "query": query})
-    with args.query_result_directory.joinpath(f'{name}.csv').open('w') as result_file:
-        csv_writer = DictWriter(result_file, fieldnames=['a', 'b'])
-        csv_writer.writeheader()
-        for query_result in r.json()['results']['bindings']:
-            csv_writer.writerow({'a': query_result['a']['value'], 'b': query_result['b']['value']})
+from sparql_endpoint import SparqlEndpoint
 
 
 def main(args):
     for query_file in args.query_directory.iterdir():
         with query_file.open() as f:
             query = f.read()
-        query_wikidata(args, query_file.stem, query)
+        wikidata_query_endpoint = SparqlEndpoint("https://query.wikidata.org/sparql")
+        with args.query_result_directory.joinpath(f'{query_file.stem}.csv').open('w') as result_file:
+            wikidata_query_endpoint.write_result_to_csv(result_file, query)
 
 
 if __name__ == '__main__':

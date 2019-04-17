@@ -1,6 +1,6 @@
-import requests
+from sparql_endpoint import SparqlEndpoint
 
-wikidata_query_endpoint = "https://query.wikidata.org/sparql"
+wikidata_query_endpoint = SparqlEndpoint("https://query.wikidata.org/sparql")
 
 
 def label_entity(entity):
@@ -11,5 +11,4 @@ def label_entity(entity):
         FILTER(LANGMATCHES(LANG(?label), "EN")).
         SERVICE wikibase:label {{ bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }}
     }}"""
-    r = requests.get(wikidata_query_endpoint, params={"format": "json", "query": query})
-    return r.json()["results"]["bindings"][0]["label"]["value"]
+    return next(wikidata_query_endpoint.query(query))['label']

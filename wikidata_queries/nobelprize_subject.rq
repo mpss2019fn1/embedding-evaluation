@@ -1,5 +1,4 @@
-SELECT ?a ?b
-WHERE {
+SELECT ?a ?b WHERE {
   ?a wdt:P166 ?b.
   ?b wdt:P31 wd:Q7191.
   ?a wdt:P569 ?_date_of_birth.

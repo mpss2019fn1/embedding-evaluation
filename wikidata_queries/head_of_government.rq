@@ -1,5 +1,4 @@
-SELECT ?a ?b
-WHERE {
+SELECT ?a ?b WHERE {
   ?a wdt:P31 wd:Q3624078.
   ?a wdt:P6 ?b.
   # ?a wdt:P30 wd:Q46.
