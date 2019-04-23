@@ -46,8 +46,6 @@ def main(args):
             vec_diffs = np.load(query_result_file)
             score = compute_vec_similarity(vec_diffs)
             print(query_result_file.stem, score)
-    elif args.mode == 'avg_eval':
-        pass
     else:
         print("api results already exist or mode not specified")
 
@@ -80,5 +78,5 @@ if __name__ == '__main__':
     )
     args = parser.parse_args()
     if args.mode not in ['api_call', 'eval_only']:
-        parser.error('Valid modes are ["api_call", "cos_eval", "avg_eval"].')
+        parser.error('Valid modes are ["api_call", "cos_eval"].')
     main(args)
