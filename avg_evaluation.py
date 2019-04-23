@@ -1,5 +1,6 @@
 import argparse
 import numpy as np
+import pandas as pd
 from gensim_loader import GensimLoader
 from pathlib import Path
 from csv import DictReader
@@ -10,18 +11,21 @@ from gensim.models.doc2vec import Doc2Vec
 
 def main(args):
     vec_loader = GensimLoader(args.embedding_file)
+    living_people = pd.read_csv('living_people.csv')
     for query_result_file in args.query_result_directory.iterdir():
         with query_result_file.open() as f:
             csv_reader = DictReader(f)
-            embeddings = [vec_loader.entity_vector(row['a'].split('/Q')[-1]) for row in tqdm(csv_reader)]
+            embeddings = [vec_loader.entity_vector(row['a'].split('/Q')[-1], living_people) for row in tqdm(csv_reader)]
             matrix = np.array(embeddings)
             euclidean_distances = cdist(matrix, matrix, 'euclidean')
             score = np.nanmean(euclidean_distances)
             print(score)
     model = Doc2Vec.load('doc2vec.binary.model')
     euclidean_distances_all = cdist(model.wv.vectors, model.wv.vectors, 'euclidean')
-    score = np.nanmean(euclidean_distances_all)
-    print(score)
+    scores = []
+    for dist in euclidean_distances_all:
+        scores.append(np.nanmean(dist))
+    print(np.nanmean(np.array(scores)))
 
 
 if __name__ == '__main__':

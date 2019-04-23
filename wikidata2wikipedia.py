@@ -1,13 +1,14 @@
 import re
 import requests
+import pandas as pd
 
 
 class WikidataEntry:
 
-    def __init__(self, wikidata_id):
+    def __init__(self, wikidata_id, dataframe):
         self.wikidata_id = wikidata_id
         self.fill_wikipedia_props()
-        self.fill_wikipedia_page_id()
+        self.match_wikipedia_page_id(dataframe)
 
     def fill_wikipedia_props(self):
         request_url = 'https://www.wikidata.org/w/api.php?action=wbgetentities'
@@ -17,11 +18,19 @@ class WikidataEntry:
         wikipedia_entry = r.json()['entities'][f'Q{self.wikidata_id}']['sitelinks']['enwiki']
         self.wikipedia_url = wikipedia_entry['url']
         self.title = wikipedia_entry['title']
+        print(self.title)
 
     def fill_wikipedia_page_id(self):
         request_url = f'https://en.wikipedia.org/w/api.php'
         r = requests.get(request_url, params={'action': 'query', 'format': 'json', 'titles': self.title})
         self.wikipedia_page_id = int(next(iter(r.json()['query']['pages'].keys())))
+
+    def match_wikipedia_page_id(self, dataframe):
+        clean_title_regex = re.compile(r'^(?P<title>[^(]+?)(\s\((?P<role>.+?)\))?$', re.IGNORECASE)
+        match = clean_title_regex.search(self.title)
+        title_part = match.group("title").replace(' ', '_')
+        wikipedia_page_id = dataframe.loc[dataframe['title'] == title_part, 'pageid'].iloc[0]
+        self.key = f'{title_part}_{int(wikipedia_page_id)}'
 
     @property
     def tag(self):
