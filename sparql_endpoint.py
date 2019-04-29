@@ -1,6 +1,7 @@
-import requests
 import re
 from csv import DictWriter
+
+import requests
 
 
 def query_values(query):

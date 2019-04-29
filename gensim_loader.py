@@ -1,8 +1,7 @@
 import numpy as np
-import pandas as pd
 from gensim.models.doc2vec import Doc2Vec
+
 from wikidata2wikipedia import WikidataEntry
-from csv import DictReader
 
 
 class GensimLoader:

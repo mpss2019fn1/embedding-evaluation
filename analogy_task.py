@@ -1,8 +1,10 @@
 from csv import DictReader
+from pathlib import Path
+
 from tqdm import tqdm
+
 from gensim_loader import GensimLoader
 from metrics import mean_cosine_similarity
-from pathlib import Path
 
 
 class AnalogyTask:

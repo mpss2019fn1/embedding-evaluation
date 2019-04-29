@@ -1,20 +1,22 @@
 import argparse
-from pathlib import Path
-from configparser import ConfigParser
-from analogy_task import AnalogyTask
-from metrics import metrics
-from gensim_loader import GensimLoader
 import logging
+from configparser import ConfigParser
+from pathlib import Path
+
+from analogy_task import AnalogyTask
+from gensim_loader import GensimLoader
+from metrics import metrics
 
 task_mapping = {'analogy': AnalogyTask, 'neighborhood': AnalogyTask}
 
 logging.info = print
 
+
 def main(args):
     config = ConfigParser()
     gensim_loader = GensimLoader(args.embedding_file)
     config.read(args.config_file)
-    tasks = [section for section in config.sections() if section.startswith('Tasks.')]
+    tasks = [section for section in config.sections() if section.startswith('Task.')]
     for task_name in tasks:
         logging.info(f'Execute task: {task_name}')
         task_properties = dict(config.items(task_name))
