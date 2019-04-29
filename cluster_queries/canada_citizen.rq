@@ -1,0 +1,7 @@
+SELECT ?canadian_citizens WHERE {
+  ?canadian_citizens wdt:P27 wd:Q16;
+    wdt:P569 ?_date_of_birth.
+  BIND(YEAR(?_date_of_birth) AS ?year)
+  FILTER(?year > 1980 )
+  FILTER(NOT EXISTS { ?canadian_citizens wdt:P570 ?date. })
+}
