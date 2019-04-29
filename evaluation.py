@@ -40,5 +40,4 @@ if __name__ == '__main__':
         help="Path to the embedding file directory",
         default="doc2vec.binary.model",
     )
-    args = parser.parse_args()
-    main(args)
+    main(parser.parse_args())

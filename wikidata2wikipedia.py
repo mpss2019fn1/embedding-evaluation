@@ -7,6 +7,9 @@ class WikidataEntry:
 
     def __init__(self, wikidata_id):
         self.wikidata_id = wikidata_id
+        self.title = None
+        self.wikipedia_url = None
+        self.wikipedia_page_id = None
         self.fill_wikipedia_props()
         self.fill_wikipedia_page_id()
 

@@ -27,6 +27,5 @@ if __name__ == '__main__':
         help="Path to the query result directory",
         default=Path(__file__).absolute().parent / "analogy_query_results",
     )
-    args = parser.parse_args()
-    main(args)
+    main(parser.parse_args())
 
