@@ -1,6 +1,15 @@
 import numpy as np
 
+metrics = dict()
 
+
+# Decorator to add the metric to the metrics dictionary
+def metric(func):
+    metrics[func.__name__] = func
+    return func
+
+
+@metric
 def mean_cosine_similarity(vectors):
     matrix = np.array(vectors)
     dot_products = matrix.dot(matrix.T)

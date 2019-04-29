@@ -17,7 +17,6 @@ class WikidataEntry:
         wikipedia_entry = r.json()['entities'][f'Q{self.wikidata_id}']['sitelinks']['enwiki']
         self.wikipedia_url = wikipedia_entry['url']
         self.title = wikipedia_entry['title']
-        print(self.title)
 
     def fill_wikipedia_page_id(self):
         request_url = f'https://en.wikipedia.org/w/api.php'

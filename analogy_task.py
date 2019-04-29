@@ -12,12 +12,10 @@ class AnalogyTask:
         self.metric = metric
         self.gensim_loader = gensim_loader
 
-
     def difference_vector(self, entity1, entity2):
         vec1 = self.gensim_loader.entity_vector(entity1)
         vec2 = self.gensim_loader.entity_vector(entity2)
         return vec1 - vec2
-
 
     def get_difference_vectors(self):
         csv_reader = DictReader(self.csv_wikidata_results)
