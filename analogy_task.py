@@ -11,6 +11,8 @@ class AnalogyTask:
         self.csv_wikidata_results = csv_wikidata_results
         self.metric = metric
         self.gensim_loader = gensim_loader
+        self.size = sum(1 for _ in csv_wikidata_results)
+        self.csv_wikidata_results.seek(0)
 
     def difference_vector(self, entity1, entity2):
         vec1 = self.gensim_loader.entity_vector(entity1)
@@ -20,8 +22,10 @@ class AnalogyTask:
     def get_difference_vectors(self):
         csv_reader = DictReader(self.csv_wikidata_results)
         header_fields = csv_reader.fieldnames
-        for row in tqdm(csv_reader):
+        pbar = tqdm(csv_reader, total=self.size)
+        for row in pbar:
             values = [row[field].split('/Q')[-1] for field in header_fields]
+            pbar.set_description(f'Processing pair: {values}')
             yield self.difference_vector(*values)
 
     def __call__(self, *args, **kwargs):
