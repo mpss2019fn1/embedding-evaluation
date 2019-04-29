@@ -1,3 +1,0 @@
-SELECT ?a WHERE {
-  ?a wdt:P27 wd:Q183.
-}

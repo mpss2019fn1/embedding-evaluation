@@ -7,10 +7,6 @@ from gensim_loader import GensimLoader
 from tqdm import tqdm
 
 
-def difference_vector(vec_loader, entity1, entity2):
-    vec1 = vec_loader.entity_vector(entity1)
-    vec2 = vec_loader.entity_vector(entity2)
-    return vec1 - vec2
 
 
 def compute_vec_similarity(vectors):
@@ -56,7 +52,7 @@ if __name__ == '__main__':
         "-query_result_directory",
         type=Path,
         help="Path to the query result directory",
-        default=Path(__file__).absolute().parent / "query_results",
+        default=Path(__file__).absolute().parent / "analogy_query_results",
     )
     parser.add_argument(
         "-difference_vector_directory",

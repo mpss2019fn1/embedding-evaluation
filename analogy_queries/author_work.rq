@@ -1,0 +1,8 @@
+SELECT ?a ?b WHERE {
+  ?a wdt:P106 wd:Q482980.
+  ?a wdt:P800 ?b.
+  ?a wdt:P569 ?_date_of_birth.
+  BIND( year(?_date_of_birth) as ?year ).
+  FILTER( ?year > 1900).
+  FILTER NOT EXISTS{ ?a wdt:P570 ?date }.
+}

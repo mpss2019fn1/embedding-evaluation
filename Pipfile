@@ -11,6 +11,7 @@ gensim = "*"
 numpy = "*"
 tqdm = "*"
 scipy = "*"
+pandas = "*"
 
 [requires]
 python_version = "3.7"
