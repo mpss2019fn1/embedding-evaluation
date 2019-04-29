@@ -1,0 +1,3 @@
+SELECT DISTINCT ?person WHERE {
+  ?person (wdt:P166/(wdt:P31?)) wd:Q7191;
+}
