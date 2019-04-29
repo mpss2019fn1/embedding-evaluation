@@ -1,11 +1,13 @@
 from csv import DictReader
 from tqdm import tqdm
+from functools import lru_cache
 
 from .task import Task
 
 
-def all_avg_distance(vectors, metric):
-    return metric(vectors)
+@lru_cache(maxsize=None)
+def all_avg_distance(gensim_loader, metric):
+    return metric(gensim_loader.vectors())
 
 
 class NeighborhoodTask(Task):
@@ -19,4 +21,4 @@ class NeighborhoodTask(Task):
             yield self.gensim_loader.entity_vector(row[header_fields[0]].split('/Q')[-1])
 
     def __call__(self, *args, **kwargs):
-        return self.metric(list(self.vectors())) / all_avg_distance(self.gensim_loader.vectors(), self.metric)
+        return self.metric(list(self.vectors())) / all_avg_distance(self.gensim_loader, self.metric)
