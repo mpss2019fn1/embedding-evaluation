@@ -3,11 +3,11 @@ import logging
 from configparser import ConfigParser
 from pathlib import Path
 
-from analogy_task import AnalogyTask
+from tasks import AnalogyTask, NeighborhoodTask
 from gensim_loader import GensimLoader
 from metrics import metrics
 
-task_mapping = {'analogy': AnalogyTask, 'neighborhood': AnalogyTask}
+task_mapping = {'analogy': AnalogyTask, 'neighborhood': NeighborhoodTask}
 
 logging.info = print
 

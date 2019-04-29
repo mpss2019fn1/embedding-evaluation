@@ -1,4 +1,5 @@
 import numpy as np
+from scipy.spatial.distance import cdist
 
 metrics = dict()
 
@@ -22,3 +23,10 @@ def mean_cosine_similarity(vectors):
 
     # ignore all values set to nan for mean calc.
     return np.nanmean(cosine_distance)
+
+
+@metric
+def avg_pairwise_distance(vectors):
+    matrix = np.array(vectors)
+    euclidean_distances = cdist(matrix, matrix, 'euclidean')
+    return np.nanmean(euclidean_distances)

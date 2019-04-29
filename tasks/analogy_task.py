@@ -5,16 +5,10 @@ from tqdm import tqdm
 
 from gensim_loader import GensimLoader
 from metrics import mean_cosine_similarity
+from .task import Task
 
 
-class AnalogyTask:
-
-    def __init__(self, csv_wikidata_results, metric, gensim_loader):
-        self.csv_wikidata_results = csv_wikidata_results
-        self.metric = metric
-        self.gensim_loader = gensim_loader
-        self.size = sum(1 for _ in csv_wikidata_results)
-        self.csv_wikidata_results.seek(0)
+class AnalogyTask(Task):
 
     def difference_vector(self, entity1, entity2):
         vec1 = self.gensim_loader.entity_vector(entity1)
