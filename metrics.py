@@ -1,5 +1,5 @@
 import numpy as np
-from scipy.spatial.distance import cdist
+from scipy.spatial.distance import pdist
 
 metrics = dict()
 
@@ -28,5 +28,5 @@ def mean_cosine_similarity(vectors):
 @metric
 def avg_pairwise_distance(vectors):
     matrix = np.array(vectors)
-    euclidean_distances = cdist(matrix, matrix, 'euclidean')
+    euclidean_distances = pdist(matrix, 'euclidean')
     return np.nanmean(euclidean_distances)

@@ -16,6 +16,9 @@ class GensimLoader:
         except KeyError:
             return np.zeros(self.model.vector_size)
 
+    def vectors(self):
+        return self.model.wv.vectors
+
 
 if __name__ == '__main__':
     loader = GensimLoader('doc2vec.binary.model')
