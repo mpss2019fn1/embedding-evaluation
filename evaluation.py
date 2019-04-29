@@ -9,7 +9,7 @@ from metrics import metrics
 
 task_mapping = {'analogy': AnalogyTask, 'neighborhood': NeighborhoodTask}
 
-logging.info = print
+logging.basicConfig(level=logging.INFO)
 
 
 def main(args):
