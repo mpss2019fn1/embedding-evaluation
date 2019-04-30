@@ -2,6 +2,6 @@ SELECT ?football_player WHERE {
   ?football_player wdt:P106 wd:Q937857;
     wdt:P569 ?_date_of_birth.
   BIND(YEAR(?_date_of_birth) AS ?year)
-  FILTER(?year > 1980 )
+  FILTER(?year > 1900 )
   FILTER(NOT EXISTS { ?football_player wdt:P570 ?date. })
 }

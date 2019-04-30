@@ -2,6 +2,6 @@ SELECT ?authors WHERE {
   ?authors wdt:P106 wd:Q482980;
     wdt:P569 ?_date_of_birth.
   BIND(YEAR(?_date_of_birth) AS ?year)
-  FILTER(?year > 1980 )
+  FILTER(?year > 1900 )
   FILTER(NOT EXISTS { ?authors wdt:P570 ?date. })
 }
