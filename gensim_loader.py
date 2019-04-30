@@ -1,20 +1,21 @@
 import numpy as np
 from gensim.models.doc2vec import Doc2Vec
-
-from wikidata2wikipedia import WikidataEntry
+from wikipedia_props_fetcher import WikipediaPropsFetcher
 
 
 class GensimLoader:
 
     def __init__(self, model_file):
         self.model = Doc2Vec.load(model_file)
+        self.props_fetcher = None
 
-    def entity_vector(self, entity_id):
-        try:
-            wikidata_entry = WikidataEntry(entity_id)
-            return self.model[wikidata_entry.identifier]
-        except KeyError:
+    def entity_vector(self, wikidata_id):
+        if self.props_fetcher is None:
+            self.props_fetcher = WikipediaPropsFetcher('living_people_wikidata_id_wikipedia_page_id_title.csv')
+        key = self.props_fetcher.get_identifier(wikidata_id)
+        if key is None:
             return np.zeros(self.model.vector_size)
+        return self.model[key]
 
     def vectors(self):
         return self.model.wv.vectors
