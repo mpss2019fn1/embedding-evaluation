@@ -15,7 +15,10 @@ class GensimLoader:
         key = self.props_fetcher.get_identifier(wikidata_id)
         if key is None:
             return np.zeros(self.model.vector_size)
-        return self.model[key]
+        try:
+            return self.model[key]
+        except KeyError:
+            return np.zeros(self.model.vector_size)
 
     def vectors(self):
         return self.model.wv.vectors

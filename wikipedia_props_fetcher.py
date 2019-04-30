@@ -8,7 +8,7 @@ class WikipediaPropsFetcher:
             self.dictionary = {row[0]: row[2]+'_'+row[1] for row in reader}
 
     def get_identifier(self, wikidata_id):
-        return self.dictionary.get(wikidata_id, None)
+        return self.dictionary.get('Q'+wikidata_id, None)
 
 
 if __name__ == '__main__':
