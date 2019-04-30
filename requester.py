@@ -19,13 +19,13 @@ if __name__ == '__main__':
         "-query_directory",
         type=Path,
         help="Path to the query directory",
-        default=Path(__file__).absolute().parent / "analogy_queries",
+        default=Path(__file__).absolute().parent / "cluster_queries",
     )
     parser.add_argument(
         "-query_result_directory",
         type=Path,
         help="Path to the query result directory",
-        default=Path(__file__).absolute().parent / "analogy_query_results",
+        default=Path(__file__).absolute().parent / "avg_query_results",
     )
     main(parser.parse_args())
 

@@ -3,7 +3,7 @@ import csv
 
 class WikipediaPropsFetcher:
     def __init__(self, path_to_csv_file):
-        with open(path_to_csv_file) as csv_file:
+        with open(path_to_csv_file, encoding="utf8") as csv_file:
             reader = csv.reader(csv_file, delimiter=';')
             self.dictionary = {row[0]: row[2]+'_'+row[1] for row in reader}
 

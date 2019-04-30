@@ -21,7 +21,7 @@ def main(args):
         logging.info(f'Execute task: {task_name}')
         task_properties = dict(config.items(task_name))
         task_class = task_mapping[task_properties['task_type']]
-        with Path(task_properties['path']).open() as f:
+        with Path(task_properties['path']).open(encoding="utf8") as f:
             task = task_class(f, metrics[task_properties['metric']], gensim_loader)
             print(task())
 
@@ -32,7 +32,7 @@ if __name__ == '__main__':
         '--config-file',
         type=Path,
         help='Path to the config file',
-        default="config.ini",
+        default="neighborhood_config.ini",
         required=False,
     )
     parser.add_argument(
