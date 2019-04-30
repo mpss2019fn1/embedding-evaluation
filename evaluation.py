@@ -32,7 +32,8 @@ if __name__ == '__main__':
         '--config-file',
         type=Path,
         help='Path to the config file',
-        required=True
+        default="config.ini",
+        required=False,
     )
     parser.add_argument(
         "--embedding-file",
