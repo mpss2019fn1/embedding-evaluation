@@ -20,6 +20,12 @@ class GensimLoader:
         except KeyError:
             return np.zeros(self.model.vector_size)
 
+    def word_vector(self, word):
+        try:
+            return self.model[word]
+        except KeyError:
+            return np.zeros(self.model.vector_size)
+
     def vectors(self):
         return self.model.wv.vectors
 

@@ -1,5 +1,6 @@
 import numpy as np
 from scipy.spatial.distance import pdist
+from scipy.spatial.distance import cosine
 
 metrics = dict()
 
@@ -8,6 +9,20 @@ metrics = dict()
 def metric(func):
     metrics[func.__name__] = func
     return func
+
+
+@metric
+def cosine_similarity(vector1, vector2):
+    """
+    Metric to calcualte the cosine similarity between two vectors.
+
+    For example used for the SimilarityTask.
+
+    :param vector1: input vector 1
+    :param vector2: input vector 2
+    :return: cosine similarity between input vectors between -1 and 1
+    """
+    return 1 - cosine(vector1, vector2)
 
 
 @metric
