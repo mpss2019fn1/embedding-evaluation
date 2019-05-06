@@ -26,7 +26,13 @@ def mean_cosine_similarity(vectors):
 
 
 @metric
-def avg_pairwise_distance(vectors):
+def mean_squared_pairwise_distance(vectors):
+    matrix = np.array(vectors)
+    return np.var(matrix, 0, ddof=1).sum() * 2
+
+
+@metric
+def mean_pairwise_distance(vectors):
     matrix = np.array(vectors)
     euclidean_distances = pdist(matrix, 'euclidean')
     return np.nanmean(euclidean_distances)
