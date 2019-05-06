@@ -1,0 +1,63 @@
+AuthorWork:
+  source: ''
+  type: 'analogy'
+  filename: 'analogy_query_results/author_work.csv'
+  metric: 'mean_cosine_similarity'
+  column:
+      a: ''
+      b: ''
+
+CapitalCountry:
+  source: ''
+  type: 'analogy'
+  filename: 'analogy_query_results/capital_country.csv'
+  metric: 'mean_cosine_similarity'
+  column:
+      a: ''
+      b: ''
+
+ChairpersonUniversity:
+  source: ''
+  type: 'analogy'
+  filename: 'analogy_query_results/chairperson_university.csv'
+  metric: 'mean_cosine_similarity'
+  column:
+      a: ''
+      b: ''
+
+HeadOfGovernment:
+  source: ''
+  type: 'analogy'
+  filename: 'analogy_query_results/head_of_government.csv'
+  metric: 'mean_cosine_similarity'
+  column:
+      a: ''
+      b: ''
+
+NobelprizeSubject:
+  source: ''
+  type: 'analogy'
+  filename: 'analogy_query_results/nobelprize_subject.csv'
+  metric: 'mean_cosine_similarity'
+  column:
+      a: ''
+      b: ''
+
+PoliticianParty:
+  source: ''
+  type: 'analogy'
+  filename: 'analogy_query_results/politician_party.csv'
+  metric: 'mean_cosine_similarity'
+  column:
+      a: ''
+      b: ''
+
+CompanyCEO:
+  source: ''
+  type: 'analogy'
+  filename: 'analogy_query_results/chief_executive_officer.csv'
+  metric: 'mean_cosine_similarity'
+  column:
+      a: ''
+      b: ''
+
