@@ -10,9 +10,32 @@ def all_avg_distance(gensim_loader, metric):
     return metric(gensim_loader.vectors())
 
 
+
+# generiere eine baseline
+# wähle zufällig x Datensätze aus (word vectors / entity vectors)
+# wende Metrik auf sie an.
+
+
+
+
+
+
+
 class NeighborhoodTask(Task):
 
     def vectors(self):
+        """
+        Returns a list of embeddings. The embeddings are fetched by using the wikidata id to get the wikipedia page id
+        and then using the wikipedia page id to get the title to that that id. The title is then passed to the model
+        to receive the embedding.
+        :return: List of embedding vectors to 'hopefully' every entry in 'csv_wikidata_results'
+        """
+
+        # to improve performance we need the following:
+        # collect all wikidata ids
+        # get all wikipedia page ids
+        # get all titles to wikipedia page ids in one request,l
+
         csv_reader = DictReader(self.csv_wikidata_results)
         header_fields = csv_reader.fieldnames
         assert len(header_fields) == 1
@@ -21,4 +44,5 @@ class NeighborhoodTask(Task):
             yield self.gensim_loader.entity_vector(row[header_fields[0]].split('/Q')[-1])
 
     def __call__(self, *args, **kwargs):
+        # Each vector in vectors corresponds to an embedding
         return self.metric(list(self.vectors())) / all_avg_distance(self.gensim_loader, self.metric)
