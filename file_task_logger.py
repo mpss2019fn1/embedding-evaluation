@@ -1,4 +1,5 @@
 import os
+from datetime import datetime
 from pathlib import Path
 
 import git
@@ -26,7 +27,8 @@ class FileTaskLogger:
     def write_metadata_file(self):
         repo = git.Repo(search_parent_directories=True)
         sha = repo.head.object.hexsha
-        metadata = {**self.task.configuration, **{'git-sha': sha}}
+
+        metadata = {**self.task.configuration, **{'git-sha': sha, 'timestamp': datetime.now()}}
         with self.directory.joinpath('metadata.yaml').open('w') as metadata_file:
             yaml.dump(metadata, metadata_file)
 

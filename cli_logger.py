@@ -14,7 +14,7 @@ class CLILogger:
     def __enter__(self):
         print('===========================')
         print(f'Task {self.task.name} started...')
-        print('Configuaration:')
+        print('Configuration:')
         print_task_config(self.task.configuration)
 
     def __exit__(self, exc_type, exc_val, exc_tb):
