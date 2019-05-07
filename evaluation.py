@@ -5,11 +5,12 @@ from pathlib import Path
 from tasks import AnalogyTask, NeighborhoodTask, SimilarityTask
 from gensim_loader import GensimLoader
 from metrics import metrics
+from cli_logger import CLILogger
 
 
 task_mapping = {'analogy': AnalogyTask, 'neighborhood': NeighborhoodTask, 'similarity': SimilarityTask}
 
-logging.basicConfig(level=logging.INFO)
+# logging.basicConfig(level=logging.INFO)
 
 
 def main(args):
@@ -22,8 +23,9 @@ def main(args):
         task_properties = data_loaded[task_name]
         task_class = task_mapping[task_properties['type']]
         with Path(task_properties['filename']).open(encoding="utf8") as f:
-            task = task_class(f, metrics[task_properties['metric']], gensim_loader)
-            print(task())
+            task = task_class(task_name, f, metrics[task_properties['metric']], gensim_loader, True)
+            with CLILogger(task):
+                print(task())
 
 
 if __name__ == '__main__':

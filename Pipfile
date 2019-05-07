@@ -13,6 +13,7 @@ tqdm = "*"
 scipy = "*"
 pandas = "*"
 pyyaml = "*"
+gitpython = "*"
 
 [requires]
 python_version = "3.7"
