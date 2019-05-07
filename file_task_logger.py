@@ -21,7 +21,7 @@ class FileTaskLogger:
     def __init__(self, parent_directory, task):
         self.task = task
         self.directory = Path(parent_directory).joinpath(self.task.name)
-        self.directory.mkdir(parents=True)
+        self.directory.mkdir(parents=True, exist_ok=True)
         self.write_metadata_file()
 
     def write_metadata_file(self):
