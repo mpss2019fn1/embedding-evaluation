@@ -4,27 +4,27 @@ from wikipedia_props_fetcher import WikipediaPropsFetcher
 
 
 class GensimLoader:
-
     def __init__(self, model_file):
         self.model = Doc2Vec.load(model_file)
         self.props_fetcher = None
+        self.null_vector = np.zeros(self.model.vector_size)
 
     def entity_vector(self, wikidata_id):
         if self.props_fetcher is None:
             self.props_fetcher = WikipediaPropsFetcher('living_people_wikidata_id_wikipedia_page_id_title.csv')
         key = self.props_fetcher.get_identifier(wikidata_id)
         if key is None:
-            return np.zeros(self.model.vector_size)
+            return self.null_vector
         try:
             return self.model[key]
         except KeyError:
-            return np.zeros(self.model.vector_size)
+            return self.null_vector
 
     def word_vector(self, word):
         try:
             return self.model[word]
         except KeyError:
-            return np.zeros(self.model.vector_size)
+            return self.null_vector
 
     def vectors(self):
         return self.model.wv.vectors

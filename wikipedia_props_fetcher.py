@@ -5,6 +5,7 @@ class WikipediaPropsFetcher:
     def __init__(self, path_to_csv_file):
         with open(path_to_csv_file, encoding="utf8") as csv_file:
             reader = csv.reader(csv_file, delimiter=';')
+            next(reader, None)
 
             self.dictionary = {row[0]: [row[1], row[2]] for row in reader}
 
