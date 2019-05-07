@@ -43,6 +43,6 @@ class NeighborhoodTask(Task):
         for row in pbar:
             yield self.gensim_loader.entity_vector(row[header_fields[0]].split('/Q')[-1])
 
-    def __call__(self, *args, **kwargs):
+    def compute(self, *args, **kwargs):
         # Each vector in vectors corresponds to an embedding
         return self.metric(list(self.vectors())) / all_avg_distance(self.gensim_loader, self.metric)

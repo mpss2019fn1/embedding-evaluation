@@ -24,7 +24,7 @@ class AnalogyTask(Task):
             pbar.set_description(f'Processing pair: {values}')
             yield self.difference_vector(*values)
 
-    def __call__(self, *args, **kwargs):
+    def compute(self, *args, **kwargs):
         difference_vectors = list(self.get_difference_vectors())
         return self.metric(difference_vectors)
 

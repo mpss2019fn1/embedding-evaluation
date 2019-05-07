@@ -9,7 +9,7 @@ from .task import Task
 
 class SimilarityTask(Task):
 
-    def __call__(self, *args, **kwargs):
+    def compute(self, *args, **kwargs):
         our_similarities = []
         data_similarities = []
         csv_reader = DictReader(self.csv_wikidata_results)

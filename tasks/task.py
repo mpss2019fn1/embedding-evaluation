@@ -20,5 +20,11 @@ class Task(ABC):
                 'metric': self.metric.__name__}
 
     @abstractmethod
+    def compute(self):
+        raise NotImplementedError
+
     def __call__(self, *args, **kwargs):
-        ...
+        result = self.compute(*args, **kwargs)
+        with self.file_task_logger.new_file('result.txt').open('w') as result_file:
+            result_file.write(str(result))
+        return result
