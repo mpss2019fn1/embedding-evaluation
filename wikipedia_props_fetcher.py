@@ -26,7 +26,7 @@ class WikipediaPropsFetcher:
         :param wikidata_id:
         :return:
         """
-        wikipedia_page_id_title_tuple = self.dictionary.get("Q" + wikidata_id)
+        wikipedia_page_id_title_tuple = self.dictionary.get("Q" + wikidata_id, None)
         if wikipedia_page_id_title_tuple is None:
             return None
         return wikipedia_page_id_title_tuple[1]
