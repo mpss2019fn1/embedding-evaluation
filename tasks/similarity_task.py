@@ -25,4 +25,7 @@ class SimilarityTask(Task):
                 if not isnan(x):
                     our_similarities.append(x)
                     data_similarities.append(row['score'])
-        return spearmanr(our_similarities, data_similarities).correlation
+        spearmanr_result = spearmanr(our_similarities, data_similarities)
+        with self.file_task_logger.new_file('p-value.txt').open('w') as p_value_file:
+            p_value_file.write(str(spearmanr_result.pvalue))
+        return spearmanr_result.correlation
