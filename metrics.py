@@ -41,8 +41,8 @@ def mean_cosine_similarity(vectors):
 
     # if entry is 0/0 ignore entry and set as nan.
     with np.errstate(divide='ignore', invalid='ignore'):
-        cosine_similarity = dot_products / norms
-    cosine_distance = 1 - cosine_similarity
+        cosine_sim = dot_products / norms
+    cosine_distance = 1 - cosine_sim
 
     # ignore all values set to nan for mean calc.
     return np.nanmean(cosine_distance)

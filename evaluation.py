@@ -6,9 +6,11 @@ from tasks import AnalogyTask, NeighborhoodTask, SimilarityTask
 from gensim_loader import GensimLoader
 from metrics import metrics
 from cli_logger import CLILogger
+from wikipedia_props_fetcher import WikipediaPropsFetcher
 
 
 task_mapping = {'analogy': AnalogyTask, 'neighborhood': NeighborhoodTask, 'similarity': SimilarityTask}
+source_type = {'csv': WikipediaPropsFetcher}
 
 # logging.basicConfig(level=logging.INFO)
 
@@ -21,9 +23,12 @@ def main(args):
     for task_name in tasks:
         logging.info((f'Execute task: {task_name}'))
         task_properties = data_loaded[task_name]
-        task_class = task_mapping[task_properties['type']]
-        with Path(task_properties['filename']).open(encoding="utf8") as f:
-            task = task_class(task_name, f, metrics[task_properties['metric']], gensim_loader, True)
+        task_class = task_mapping[task_properties['task']]
+        source = task_properties['source']
+        props_fetcher = source_type[source['type']]
+        gensim_loader.props_fetcher = props_fetcher(source['props_fetcher'], source['props_delimiter'])
+        with Path(source['filename']).open(encoding="utf8") as f:
+            task = task_class(task_name, f, metrics[task_properties['metric']], gensim_loader, source, True)
             with CLILogger(task):
                 print(task())
 
@@ -34,7 +39,7 @@ if __name__ == '__main__':
         '--config-file',
         type=Path,
         help='Path to the config file',
-        default="config.yaml",
+        default="task_collection/similarity_task.yaml",
         required=False,
     )
     parser.add_argument(

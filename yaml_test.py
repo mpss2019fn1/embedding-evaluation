@@ -32,7 +32,7 @@ if __name__ == '__main__':
         '--config-file',
         type=Path,
         help='Path to the config file',
-        default="config.yaml",
+        default="analogy_task.yaml",
         required=False,
     )
     parser.add_argument(

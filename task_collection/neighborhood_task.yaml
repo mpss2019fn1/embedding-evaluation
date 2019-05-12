@@ -1,0 +1,68 @@
+CapitalCountry:
+  task: 'neighborhood'
+  metric: 'mean_squared_pairwise_distance'
+  source:
+    type: 'csv'
+    props_fetcher: 'living_people_wikidata_id_wikipedia_page_id_title.csv'
+    props_delimiter: ';'
+    filename: 'avg_query_results/academy_award_winner.csv'
+    delimiter: ','
+    column_type:
+      - column1: 'word_vector'
+    columns:
+      fieldname1: 'academy_award_winner'
+
+
+#AcademyAwardWinner:
+#  source: ''
+#  type: 'neighborhood'
+#  filename: 'avg_query_results/academy_award_winner.csv'
+#  metric: 'mean_squared_pairwise_distance'
+#  column:
+#      a: ''
+#      b: ''
+#
+#Authors:
+#  source: ''
+#  type: 'neighborhood'
+#  filename: 'avg_query_results/academy_award_winner.csv'
+#  metric: 'mean_squared_pairwise_distance'
+#  column:
+#      a: ''
+#      b: ''
+#
+#CanadaCitizen:
+#  source: ''
+#  type: 'neighborhood'
+#  filename: 'avg_query_results/academy_award_winner.csv'
+#  metric: 'mean_squared_pairwise_distance'
+#  column:
+#      a: ''
+#      b: ''
+#
+#FootballPlayers:
+#  source: ''
+#  type: 'neighborhood'
+#  filename: 'avg_query_results/academy_award_winner.csv'
+#  metric: 'mean_squared_pairwise_distance'
+#  column:
+#      a: ''
+#      b: ''
+#
+#GermanCitizen:
+#  source: ''
+#  type: 'neighborhood'
+#  filename: 'avg_query_results/academy_award_winner.csv'
+#  metric: 'mean_squared_pairwise_distance'
+#  column:
+#      a: ''
+#      b: ''
+#
+#NobelPrizeHolders:
+#  source: ''
+#  type: 'neighborhood'
+#  filename: 'avg_query_results/academy_award_winner.csv'
+#  metric: 'mean_squared_pairwise_distance'
+#  column:
+#      a: ''
+#      b: ''

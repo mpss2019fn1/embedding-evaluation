@@ -10,8 +10,6 @@ class GensimLoader:
         self.null_vector = np.zeros(self.model.vector_size)
 
     def entity_vector(self, wikidata_id):
-        if self.props_fetcher is None:
-            self.props_fetcher = WikipediaPropsFetcher('living_people_wikidata_id_wikipedia_page_id_title.csv')
         key = self.props_fetcher.get_identifier(wikidata_id)
         if key is None:
             return self.null_vector

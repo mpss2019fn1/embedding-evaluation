@@ -16,11 +16,11 @@ class AnalogyTask(Task):
         return vec1 - vec2
 
     def get_difference_vectors(self):
-        csv_reader = DictReader(self.csv_wikidata_results)
-        header_fields = csv_reader.fieldnames
+        csv_reader = DictReader(self.csv_wikidata_results, fieldnames=self.source['columns'].values(),
+                                delimiter=self.source['delimiter'])
         pbar = tqdm(csv_reader, total=self.size)
         for row in pbar:
-            values = [row[field].split('/Q')[-1] for field in header_fields]
+            values = [row[field].split('/Q')[-1] for field in self.source['columns'].values()]
             pbar.set_description(f'Processing pair: {values}')
             yield self.difference_vector(*values)
 

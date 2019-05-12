@@ -6,7 +6,6 @@ from csv import DictReader
 from tqdm import tqdm
 from metrics import mean_squared_pairwise_distance
 from gensim_loader import GensimLoader
-
 from tasks.task import Task
 
 
@@ -23,6 +22,7 @@ class NeighborhoodTask(Task):
         csv_reader = DictReader(self.csv_wikidata_results)
         header_fields = csv_reader.fieldnames
         assert len(header_fields) == 1
+
         pbar = tqdm(csv_reader, total=self.size)
         embeddings = []
         for row in pbar:
