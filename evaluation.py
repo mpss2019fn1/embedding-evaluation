@@ -2,14 +2,13 @@ import argparse
 import logging
 import yaml
 from pathlib import Path
-from tasks import AnalogyTask, NeighborhoodTask, SimilarityTask
+from tasks import task_mapping
 from gensim_loader import GensimLoader
 from metrics import metrics
 from cli_logger import CLILogger
 from wikipedia_props_fetcher import WikipediaPropsFetcher
 
 
-task_mapping = {'analogy': AnalogyTask, 'neighborhood': NeighborhoodTask, 'similarity': SimilarityTask}
 source_type = {'csv': WikipediaPropsFetcher}
 
 # logging.basicConfig(level=logging.INFO)
