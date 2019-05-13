@@ -11,8 +11,9 @@ from .task import Task
 class AnalogyTask(Task):
 
     def difference_vector(self, entity1, entity2):
-        vec1 = self.gensim_loader.word_vector(entity1)
-        vec2 = self.gensim_loader.word_vector(entity2)
+        vector_mapping = {'word_vector': self.gensim_loader.word_vector, 'entity_vector': self.gensim_loader.entity_vector}
+        vec1 = vector_mapping[self.source['column_types'][0]]
+        vec2 = vector_mapping[self.source['column_types'][1]]
         return vec1 - vec2
 
     def get_difference_vectors(self):

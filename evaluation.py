@@ -23,9 +23,9 @@ def main(args):
     for task_name in tasks:
         logging.info((f'Execute task: {task_name}'))
         task_properties = data_loaded[task_name]
-        task_class = task_mapping[task_properties['task']]
+        task_class = task_mapping[task_properties['task_type']]
         source = task_properties['source']
-        props_fetcher = source_type[source['type']]
+        props_fetcher = source_type[source['source_type']]
         gensim_loader.props_fetcher = props_fetcher(source['props_fetcher'], source['props_delimiter'])
         with Path(source['filename']).open(encoding="utf8") as f:
             task = task_class(task_name, f, metrics[task_properties['metric']], gensim_loader, source, True)
@@ -46,6 +46,6 @@ if __name__ == '__main__':
         "--embedding-file",
         type=str,
         help="Path to the embedding file directory",
-        default="doc2vec.binary.model",
+        default="model/doc2vec.binary.model",
     )
     main(parser.parse_args())

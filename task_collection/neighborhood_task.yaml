@@ -3,7 +3,7 @@ CapitalCountry:
   metric: 'mean_squared_pairwise_distance'
   source:
     type: 'csv'
-    props_fetcher: 'living_people_wikidata_id_wikipedia_page_id_title.csv'
+    props_fetcher: 'data/living_people_wikidata_id_wikipedia_page_id_title.csv'
     props_delimiter: ';'
     filename: 'avg_query_results/academy_award_winner.csv'
     delimiter: ','

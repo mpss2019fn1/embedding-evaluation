@@ -1,9 +1,9 @@
 CapitalCountry:
-  task: 'analogy'
+  task_type: 'analogy'
   metric: 'mean_cosine_similarity'
   source:
-    type: 'csv'
-    props_fetcher: 'living_people_wikidata_id_wikipedia_page_id_title.csv'
+    source_type: 'csv'
+    props_fetcher: 'data/living_people_wikidata_id_wikipedia_page_id_title.csv'
     props_delimiter: ';'
     filename: 'analogy_query_results/capital_country.csv'
     delimiter: ','
