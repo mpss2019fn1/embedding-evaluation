@@ -3,7 +3,7 @@ CapitalCountry:
   metric: 'cosine_similarity'
   source:
     type: 'csv'
-    path: 'analogy_query_results/capital_country.csv'
+    path: 'data/MEN_full.csv'
     csv_delimiter: ','
     columns:
       input:

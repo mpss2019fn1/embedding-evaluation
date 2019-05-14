@@ -1,6 +1,8 @@
 from abc import ABC, abstractmethod
 from file_task_logger import FileTaskLogger, NullFileTaskLogger
 
+from sources import Source
+
 
 class Task(ABC):
 
@@ -11,7 +13,7 @@ class Task(ABC):
         self.gensim_loader = gensim_loader
         self.size = sum(1 for _ in csv_wikidata_results) - 1
         self.csv_wikidata_results.seek(0)
-        self.source = source
+        self.source = Source.from_config(source)
         self.file_task_logger = FileTaskLogger('logging', self) if logging else NullFileTaskLogger()
         self.unknown_words = []
 
