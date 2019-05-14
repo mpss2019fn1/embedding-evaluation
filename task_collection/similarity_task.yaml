@@ -1,17 +1,13 @@
 CapitalCountry:
-  task_type: 'similarity'
+  type: 'similarity'
   metric: 'cosine_similarity'
   source:
-    source_type: 'csv'
-    props_fetcher: 'data/living_people_wikidata_id_wikipedia_page_id_title.csv'
-    props_delimiter: ';'
-    filename: 'data/MTURK-771.csv'
-    delimiter: ','
-    column_type:
-      - 'word1'
-      - 'word2'
-      - 'score'
+    type: 'csv'
+    path: 'analogy_query_results/capital_country.csv'
+    csv_delimiter: ','
     columns:
-      - 'word1'
-      - 'word2'
-      - 'score'
+      input:
+        word1: 'word_vector'
+        word2: 'word_vector'
+      output:
+        score: 'float'
