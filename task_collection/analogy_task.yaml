@@ -1,15 +1,11 @@
 CapitalCountry:
-  task_type: 'analogy'
+  type: 'analogy'
   metric: 'mean_cosine_similarity'
   source:
-    source_type: 'csv'
-    props_fetcher: 'data/living_people_wikidata_id_wikipedia_page_id_title.csv'
-    props_delimiter: ';'
-    filename: 'analogy_query_results/capital_country.csv'
-    delimiter: ','
-    column_type:
-      - column1: 'word_vector'
-      - coulmn2: 'word_vector'
+    type: 'csv'
+    path: 'test1.csv'
+    csv_delimiter: ','
     columns:
-      fieldname1: 'capital'
-      fieldname2: 'country'
+      input:
+        word1: 'word_vector'
+        word2: 'word_vector'

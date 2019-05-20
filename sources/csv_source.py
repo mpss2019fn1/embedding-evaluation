@@ -13,7 +13,7 @@ class CSVSource(Source):
         self.csv_file = open(self.config['path'])
         self.reader = DictReader(self.csv_file, delimiter=self.config['csv_delimiter'])
         self.columns = list(self.config['columns']['input'].keys())
-        output_columns = list(self.config['columns']['output'].keys())
+        output_columns = list(self.config['columns'].get('output', {}).keys())
         self.columns.extend(output_columns)
 
     def __iter__(self):
