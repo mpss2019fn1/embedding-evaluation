@@ -8,11 +8,6 @@ from metrics import metrics
 from cli_logger import CLILogger
 from wikipedia_props_fetcher import WikipediaPropsFetcher
 
-from sources import Source
-
-
-source_type = {'csv': 'k'}
-
 # logging.basicConfig(level=logging.INFO)
 
 
@@ -26,7 +21,6 @@ def main(args):
         task_properties = data_loaded[task_name]
         task_class = task_mapping[task_properties['type']]
         source = task_properties['source']
-        gensim_loader.props_fetcher = WikipediaPropsFetcher('data/living_people_wikidata_id_wikipedia_page_id_title.csv', ';')
         with Path(source['path']).open(encoding="utf8") as f:
             task = task_class(task_name, f, metrics[task_properties['metric']], gensim_loader, source, True)
             with CLILogger(task):

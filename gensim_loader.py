@@ -1,11 +1,12 @@
 import numpy as np
 from gensim.models.doc2vec import Doc2Vec
+from wikipedia_props_fetcher import WikipediaPropsFetcher
 
 
 class GensimLoader:
     def __init__(self, model_file):
         self.model = Doc2Vec.load(model_file)
-        self.props_fetcher = None
+        self.props_fetcher = WikipediaPropsFetcher('data/living_people_wikidata_id_wikipedia_page_id_title.csv', ';')
         self.null_vector = np.zeros(self.model.vector_size)
         self.embedding_not_found_set = set()
         self.identifier_not_found_set = set()

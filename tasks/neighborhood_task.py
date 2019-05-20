@@ -1,6 +1,7 @@
 import math
 import os
 import csv
+import numpy as np
 
 from tqdm import tqdm
 
@@ -19,16 +20,11 @@ class NeighborhoodTask(Task):
         :return: List of embedding vectors to 'hopefully' every entry in 'csv_wikidata_results'
         """
 
-        csv_reader = csv.DictReader(self.csv_wikidata_results)
-        header_fields = csv_reader.fieldnames
-        assert len(header_fields) == 1
-
-        pbar = tqdm(csv_reader, total=self.size)
         embeddings = []
-        for row in pbar:
+        for row in self.source:
             statistics.wikidata_entry_count = statistics.wikidata_entry_count + 1
-            embedding = self.gensim_loader.entity_vector(row[header_fields[0]].split('/Q')[-1])
-            if embedding is not self.gensim_loader.null_vector:
+            embedding = row[0].vector
+            if embedding is not np.zeros(embedding.shape[0]):
                 embeddings.append(embedding)
                 statistics.embeddings_found = statistics.embeddings_found + 1
         return embeddings

@@ -1,13 +1,10 @@
-CapitalCountry:
-  task: 'neighborhood'
+AcadamyAwardWinner:
+  type: 'neighborhood'
   metric: 'mean_squared_pairwise_distance'
   source:
     type: 'csv'
-    props_fetcher: 'data/living_people_wikidata_id_wikipedia_page_id_title.csv'
-    props_delimiter: ';'
-    filename: 'avg_query_results/academy_award_winner.csv'
-    delimiter: ','
-    column_type:
-      - column1: 'word_vector'
+    path: 'cluster_query_results/academy_award_winner.csv'
+    csv_delimiter: ','
     columns:
-      fieldname1: 'academy_award_winner'
+      input:
+        item: 'word_vector'
