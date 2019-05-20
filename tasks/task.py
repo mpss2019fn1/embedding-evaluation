@@ -10,22 +10,10 @@ class Task(ABC):
         self.name = name
         self.csv_wikidata_results = csv_wikidata_results
         self.metric = metric
-        self.gensim_loader = gensim_loader
         self.size = sum(1 for _ in csv_wikidata_results) - 1
         self.csv_wikidata_results.seek(0)
-        self.source = Source.from_config(source)
         self.file_task_logger = FileTaskLogger('logging', self) if logging else NullFileTaskLogger()
-        self.unknown_words = []
-
-    def __del__(self):
-        with self.file_task_logger.new_file('unknown_words.txt').open('w') as unknown_words_file:
-            for word in sorted(self.unknown_words):
-                unknown_words_file.write(word + '\n')
-
-    def get_word_vector(self, word):
-        if word not in self.gensim_loader.model.wv.vocab:
-            self.unknown_words.append(word)
-        return self.gensim_loader.word_vector(word)
+        self.source = Source.from_config(source, self.file_task_logger, gensim_loader)
 
     @property
     def configuration(self):

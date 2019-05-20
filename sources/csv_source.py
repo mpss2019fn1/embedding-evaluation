@@ -5,18 +5,17 @@ from .source import Source
 
 
 class CSVSource(Source):
-
     source_type = 'csv'
 
-    def __init__(self, source_config):
-        super().__init__(source_config)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         self.csv_file = open(self.config['path'])
         self.reader = DictReader(self.csv_file, delimiter=self.config['csv_delimiter'])
-        self.columns = list(self.config['columns']['input'].keys())
-        output_columns = list(self.config['columns'].get('output', {}).keys())
-        self.columns.extend(output_columns)
+        self.columns = self.config['columns']['input']
+        output_columns = self.config['columns'].get('output', {})
+        self.columns.update(output_columns)
 
     def __iter__(self):
         for row in self.reader:
-            yield itemgetter(*self.columns)(row)
-
+            yield [self.create_entry(column, type) for column, type in
+                   zip(itemgetter(*self.columns.keys())(row), self.columns.values())]

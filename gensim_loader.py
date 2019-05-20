@@ -35,8 +35,3 @@ class GensimLoader:
         with open(filename, "w+") as file:
             {file.write(entry + "\n") for entry in iterable}
 
-
-
-
-if __name__ == '__main__':
-    loader = GensimLoader('doc2vec.binary.model')

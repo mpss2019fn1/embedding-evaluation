@@ -3,9 +3,10 @@ CapitalCountry:
   metric: 'mean_cosine_similarity'
   source:
     type: 'csv'
-    path: 'test1.csv'
+    path: 'analogy_query_results/author_work.csv'
     csv_delimiter: ','
     columns:
       input:
-        word1: 'word_vector'
-        word2: 'word_vector'
+        a: 'wikidata_entity'
+        b: 'wikidata_entity'
+
