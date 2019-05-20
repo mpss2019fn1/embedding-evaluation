@@ -1,6 +1,5 @@
 import numpy as np
 from gensim.models.doc2vec import Doc2Vec
-from wikipedia_props_fetcher import WikipediaPropsFetcher
 
 
 class GensimLoader:
@@ -16,16 +15,16 @@ class GensimLoader:
         if key is None:
             self.identifier_not_found_set.add(wikidata_id)
             return self.null_vector
-        try:
-            return self.model[key]
-        except KeyError:
-            self.embedding_not_found_set.add(key)
-            return self.null_vector
+        return self.get_embedding(key, self.model)
 
     def word_vector(self, word):
+        return self.get_embedding(word, self.model.wv)
+
+    def get_embedding(self, key, embedding_dictionary):
         try:
-            return self.model[word]
+            return embedding_dictionary[key]
         except KeyError:
+            self.embedding_not_found_set.add(key)
             return self.null_vector
 
     def vectors(self):
