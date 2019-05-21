@@ -29,7 +29,7 @@ class Source(ABC):
         elif value_type == 'wikidata_entity':
             return EmbeddingEntry(key, self.gensim_loader.entity_vector(key.split('/Q')[-1]))
         else:
-            return EmbeddingEntry(key, key)
+            return key
 
     def get_word_vector(self, word):
         if word not in self.gensim_loader.model.wv.vocab:

@@ -1,8 +1,6 @@
-from csv import DictReader
 from math import isnan
 
 from scipy.stats import spearmanr
-from tqdm import tqdm
 
 from .task import Task
 
@@ -15,10 +13,8 @@ class SimilarityTask(Task):
         with self.file_task_logger.new_file('similarities.csv').open('w') as similarity_file:
             for row in self.source:
                 word1, word2, score = row
-                word1_vector = self.get_word_vector(word1)
-                word2_vector = self.get_word_vector(word2)
-                x = self.metric(word1_vector, word2_vector)
-                similarity_file.write(','.join((word1, word2, str(x))) + '\n')
+                x = self.metric(word1.vector, word2.vector)
+                similarity_file.write(','.join((word1.name, word2.name, str(x))) + '\n')
                 if not isnan(x):
                     our_similarities.append(x)
                     data_similarities.append(score)
