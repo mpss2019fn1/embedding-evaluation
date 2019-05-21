@@ -16,6 +16,8 @@ class CSVSource(Source):
         self.columns.update(output_columns)
 
     def __iter__(self):
+        key_getter = itemgetter(*self.columns.keys())
         for row in self.reader:
             yield [self.create_entry(column, type) for column, type in
-                   zip(itemgetter(*self.columns.keys())(row), self.columns.values())]
+                   zip(key_getter(row) if type(key_getter(row)) == tuple else [key_getter(row)], self.columns.values())]
+

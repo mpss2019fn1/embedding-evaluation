@@ -7,4 +7,4 @@ AcadamyAwardWinner:
     csv_delimiter: ','
     columns:
       input:
-        item: 'word_vector'
+        item: 'wikidata_entity'

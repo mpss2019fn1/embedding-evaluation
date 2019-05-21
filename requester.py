@@ -16,16 +16,13 @@ def main(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "-query_directory",
+        "--query-directory",
         type=Path,
         help="Path to the query directory",
-        default=Path(__file__).absolute().parent / "cluster_queries",
     )
     parser.add_argument(
-        "-query_result_directory",
+        "--query-result-directory",
         type=Path,
         help="Path to the query result directory",
-        default=Path(__file__).absolute().parent / "avg_query_results",
     )
     main(parser.parse_args())
-

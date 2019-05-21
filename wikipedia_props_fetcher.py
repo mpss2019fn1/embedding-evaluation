@@ -34,8 +34,8 @@ class WikipediaPropsFetcher:
 
 
 if __name__ == '__main__':
-    a = WikipediaPropsFetcher('living_people_wikidata_id_wikipedia_page_id_title.csv')
+    a = WikipediaPropsFetcher('data/living_people_wikidata_id_wikipedia_page_id_title.csv', delimiter=';')
     print(len(a.dictionary))
-    print(a.get_identifier('Q567'))
+    print(a.get_identifier('567'))
 
 
