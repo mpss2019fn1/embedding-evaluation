@@ -2,13 +2,19 @@ from abc import ABC, abstractmethod
 from attr import dataclass
 
 from embedding_entry import EmbeddingEntry
+from gensim_loader import PropsFetcherEntryNotFound, EmbeddingEntryNotFound
 
 
 def log_unknown_entries(f):
     def function(self, entry):
-        if entry not in self.gensim_loader.model.wv.vocab:
-            self.unknown_entries.append(entry)
-        return f(self, entry)
+        try:
+            return f(self, entry)
+        except PropsFetcherEntryNotFound as exception:
+            self.unknown_knowledge_base_mapping.append(exception.key)
+            return self.gensim_loader.null_vector
+        except EmbeddingEntryNotFound as exception:
+            self.unknown_embedding_entries.append(exception.key)
+            return self.gensim_loader.null_vector
     return function
 
 
@@ -16,7 +22,8 @@ class Source(ABC):
     def __init__(self, source_config, logger, gensim_loader=None):
         self.config = source_config
         self.gensim_loader = gensim_loader
-        self.unknown_entries = []
+        self.unknown_embedding_entries = []
+        self.unknown_knowledge_base_mapping = []
         self.logger = logger
 
     @abstractmethod
@@ -49,9 +56,12 @@ class Source(ABC):
         return self.gensim_loader.entity_vector(entity)
 
     def __del__(self):
-        with self.logger.new_file('unknown_entries.txt').open('w') as unknown_words_file:
-            for entry in sorted(self.unknown_entries):
-                unknown_words_file.write(entry + '\n')
+        with self.logger.new_file('unknown_embedding_entries.txt').open('w') as unknown_embedding_entries_file:
+            for entry in sorted(self.unknown_embedding_entries):
+                unknown_embedding_entries_file.write(entry + '\n')
+        with self.logger.new_file('unknown_knowledge_base_mapping.txt').open('w') as unknown_mapping_file:
+            for entry in sorted(self.unknown_knowledge_base_mapping):
+                unknown_mapping_file.write(entry + '\n')
 
     @property
     @classmethod
@@ -63,5 +73,3 @@ class Source(ABC):
     class Statistics:
         entries_found: int
         entry_misses: int
-
-

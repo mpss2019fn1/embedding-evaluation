@@ -3,19 +3,28 @@ from gensim.models.doc2vec import Doc2Vec
 from wikipedia_props_fetcher import WikipediaPropsFetcher
 
 
+class EmbeddingEntryNotFound(Exception):
+    def __init__(self, message, key):
+        super().__init__(message)
+        self.key = key
+
+
+class PropsFetcherEntryNotFound(Exception):
+    def __init__(self, message, key):
+        super().__init__(message)
+        self.key = key
+
+
 class GensimLoader:
     def __init__(self, model_file):
         self.model = Doc2Vec.load(model_file)
         self.props_fetcher = WikipediaPropsFetcher('data/living_people_wikidata_id_wikipedia_page_id_title.csv', ';')
         self.null_vector = np.zeros(self.model.vector_size)
-        self.embedding_not_found_set = set()
-        self.identifier_not_found_set = set()
 
     def entity_vector(self, wikidata_id):
         key = self.props_fetcher.get_identifier(wikidata_id)
         if key is None:
-            self.identifier_not_found_set.add(wikidata_id)
-            return self.null_vector
+            raise PropsFetcherEntryNotFound(f"{key} was not found in the props fetcher file", wikidata_id)
         return self.get_embedding(key, self.model)
 
     def word_vector(self, word):
@@ -25,14 +34,13 @@ class GensimLoader:
         try:
             return embedding_dictionary[key]
         except KeyError:
-            self.embedding_not_found_set.add(key)
-            return self.null_vector
+            raise EmbeddingEntryNotFound(f"{key} was not found in the embedding", key)
 
     def vectors(self):
         return self.model.wv.vectors
 
     @staticmethod
     def save_to_file(iterable, filename):
-        with open(filename, "w+") as file:
-            {file.write(entry + "\n") for entry in iterable}
-
+        with open(filename, 'w+') as file:
+            for entry in iterable:
+                file.write(entry + '\n')
