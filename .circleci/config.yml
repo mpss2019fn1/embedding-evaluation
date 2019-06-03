@@ -24,6 +24,7 @@ jobs:
           command: |
             pip install pipenv
             pipenv install --dev
+            pipenv shell
       - run:
           name: Build docs
           command: cd docs/ && make html
