@@ -2,16 +2,13 @@ from abc import ABC, abstractmethod
 from attr import dataclass
 
 from embedding_entry import EmbeddingEntry
-from gensim_loader import PropsFetcherEntryNotFound, EmbeddingEntryNotFound
+from gensim_loader import EmbeddingEntryNotFound
 
 
 def log_unknown_entries(f):
     def function(self, entry):
         try:
             return f(self, entry)
-        except PropsFetcherEntryNotFound as exception:
-            self.unknown_knowledge_base_mapping.append(exception.key)
-            return self.gensim_loader.null_vector
         except EmbeddingEntryNotFound as exception:
             self.unknown_embedding_entries.append(exception.key)
             return self.gensim_loader.null_vector
@@ -49,11 +46,11 @@ class Source(ABC):
 
     @log_unknown_entries
     def get_word_vector(self, word):
-        return self.gensim_loader.word_vector(word)
+        return self.gensim_loader[word]
 
     @log_unknown_entries
     def get_entity_vector(self, entity):
-        return self.gensim_loader.entity_vector(entity)
+        return self.gensim_loader[entity]
 
     def __del__(self):
         with self.logger.new_file('unknown_embedding_entries.txt').open('w') as unknown_embedding_entries_file:
