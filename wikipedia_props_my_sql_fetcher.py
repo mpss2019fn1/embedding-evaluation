@@ -38,6 +38,7 @@ class WikipediaPropsMySQLFetcher(WikipediaPropsFetcher):
         cleaned_title = ''.join(chars).replace(' ', '_').replace('&amp;', '&').replace('&#39;', "'")
         return cleaned_title
 
+
 if __name__ == '__main__':
     print(WikipediaPropsMySQLFetcher("root", "toor", "127.0.0.1", "mpss2019",
                                      "select cast(p1.pp_value as char(32)) as wikidata_id, p1.pp_page as " +

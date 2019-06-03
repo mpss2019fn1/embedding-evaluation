@@ -19,4 +19,3 @@ if __name__ == '__main__':
         required=False,
     )
     main(parser.parse_args())
-

@@ -20,4 +20,3 @@ class CSVSource(Source):
         for row in self.reader:
             yield [self.create_entry(column, type) for column, type in
                    zip(key_getter(row) if type(key_getter(row)) == tuple else [key_getter(row)], self.columns.values())]
-

@@ -36,5 +36,3 @@ class FileTaskLogger:
         new_file = self.directory.joinpath(filename)
         new_file.touch()
         return new_file
-
-

@@ -3,7 +3,7 @@ import logging
 import yaml
 from pathlib import Path
 from tasks import AnalogyTask, NeighborhoodTask
-from gensim_loader import GensimLoader
+from gensim_loader import VectorLoader
 from metrics import metrics
 
 
@@ -13,7 +13,7 @@ logging.basicConfig(level=logging.INFO)
 
 
 def main(args):
-    gensim_loader = GensimLoader(args.embedding_file)
+    gensim_loader = VectorLoader(args.embedding_file)
     with open(args.config_file, 'r') as stream:
         data_loaded = yaml.safe_load(stream)
     tasks = [*data_loaded]

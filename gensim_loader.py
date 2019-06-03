@@ -15,7 +15,7 @@ class PropsFetcherEntryNotFound(Exception):
         self.key = key
 
 
-class GensimLoader:
+class VectorLoader:
     def __init__(self, model_file):
         self.model = Doc2Vec.load(model_file)
         self.props_fetcher = WikipediaPropsFetcher('data/living_people_wikidata_id_wikipedia_page_id_title.csv', ';')

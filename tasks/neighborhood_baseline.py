@@ -1,5 +1,5 @@
 import random
-from gensim_loader import GensimLoader
+from gensim_loader import VectorLoader
 from metrics import mean_squared_pairwise_distance
 
 
@@ -32,7 +32,7 @@ class NeighborhoodBaseline:
 
 
 if __name__ == '__main__':
-    loader = GensimLoader('doc2vec.binary.model')
+    loader = VectorLoader('doc2vec.binary.model')
     baseline = NeighborhoodBaseline(loader)
     print("samples;mean_squared_pairwise_distance")
     sample_sizes = [10, 100, 1000, 10000, 100000, 200000]

@@ -3,16 +3,15 @@ import logging
 import yaml
 from pathlib import Path
 from tasks import task_mapping
-from gensim_loader import GensimLoader
+from gensim_loader import VectorLoader
 from metrics import metrics
 from cli_logger import CLILogger
-from wikipedia_props_fetcher import WikipediaPropsFetcher
 
 # logging.basicConfig(level=logging.INFO)
 
 
 def main(args):
-    gensim_loader = GensimLoader(args.embedding_file)
+    gensim_loader = VectorLoader(args.embedding_file)
     with open(args.task_config, 'r') as stream:
         data_loaded = yaml.safe_load(stream)
     tasks = [*data_loaded]
@@ -37,8 +36,8 @@ if __name__ == '__main__':
     )
     parser.add_argument(
         "--embedding-file",
-        type=str,
-        help="Path to the embedding file directory",
+        type=Path,
+        help="Path to the embedding vector file",
         required=True
     )
     main(parser.parse_args())

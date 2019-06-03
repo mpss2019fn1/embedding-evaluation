@@ -1,7 +1,7 @@
 import csv
 import os
 
-from gensim_loader import GensimLoader
+from gensim_loader import VectorLoader
 from metrics import mean_squared_pairwise_distance
 from tasks import NeighborhoodTask
 
@@ -38,7 +38,7 @@ if __name__ == '__main__':
     ROOT_DIRECTORY = '/home/mapp/masterprojekt/Neighborhood Evaluations/'
     INPUT_DIRECTORY = f'{os.path.join(ROOT_DIRECTORY, LANG + "_occupations")}'
 
-    loader = GensimLoader('doc2vec.binary.model')
+    loader = VectorLoader('doc2vec.binary.model')
 
     output = []
 
@@ -57,8 +57,10 @@ if __name__ == '__main__':
         file.write("dataset;name_of_metric;wikidata_entries;found_embeddings;score\n")
         {file.write(row + "\n") for row in output}
 
-    loader.save_to_file(loader.identifier_not_found_set, os.path.join(ROOT_DIRECTORY, LANG + '_not_found_identifiers.txt'))
-    loader.save_to_file(loader.embedding_not_found_set, os.path.join(ROOT_DIRECTORY, LANG + '_not_found_embeddings.txt'))
+    loader.save_to_file(loader.identifier_not_found_set,
+                        os.path.join(ROOT_DIRECTORY, LANG + '_not_found_identifiers.txt'))
+    loader.save_to_file(loader.embedding_not_found_set,
+                        os.path.join(ROOT_DIRECTORY, LANG + '_not_found_embeddings.txt'))
 
     # build_groups(os.path.join(ROOT_DIRECTORY, LANG + '_person_occupation.csv'),
     #              os.path.join(ROOT_DIRECTORY, LANG + '_occupation_name.csv'),
