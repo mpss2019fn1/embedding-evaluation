@@ -25,8 +25,21 @@ jobs:
             pip install pipenv
             pipenv install --dev
       - run:
-          name: Lint
+          name: Lint (pylint)
           command: find . -iname "*.py" | xargs pipenv run pylint
+  flake8:
+    docker:
+      - image: python:3.7
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: |
+            pip install pipenv
+            pipenv install --dev
+      - run:
+          name: Lint (flake8)
+          command: pipenv run flake8 .
   docs-build:
     docker:
       - image: python:3.7
@@ -72,7 +85,7 @@ workflows:
     jobs:
       - test
       - docs-build
-      - pylint
+      - flake8
       - docs-deploy:
           requires:
             - test
