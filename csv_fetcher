@@ -1,8 +1,0 @@
-from csv import DictReader
-
-
-class csv_fetcher():
-
-    def __call__(self, file, source):
-        self.file = file
-        self.source = source
