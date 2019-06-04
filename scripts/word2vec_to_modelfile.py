@@ -11,7 +11,7 @@ def main(args):
 
     _ = glove2word2vec(glove_file, tmp_file)
 
-    vectors = KeyedVectors.load_word2vec_format(tmp_file)
+    vectors = KeyedVectors.load_word2vec_format(tmp_file, binary=True)
 
     model = Word2Vec()
     model.wv = vectors
@@ -25,12 +25,14 @@ if __name__ == '__main__':
         '--input-file',
         type=str,
         help='Path to the input file in word2vec format',
-        required=True,
+        default='model/fasttext/cc.en.300.bin',
+        required=False,
     )
     parser.add_argument(
         "--output-file",
         type=str,
         help="Path to the output file",
-        required=True
+        default="output.model",
+        required=False
     )
     main(parser.parse_args())

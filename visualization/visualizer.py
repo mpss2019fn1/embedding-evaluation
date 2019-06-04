@@ -6,7 +6,6 @@ METADATA_FILE = 'metadata.yaml'
 
 
 class Visualizer(ABC):
-
     @property
     @classmethod
     @abstractmethod

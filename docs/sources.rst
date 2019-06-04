@@ -20,16 +20,6 @@ sources.source module
    :members:
    :undoc-members:
    :show-inheritance:
-
-==================   ============
-Name                 Age
-==================   ============
-John D Hunter        40
-Cast of Thousands    41
-And Still More       42
-==================   ============
-
-
 Module contents
 ---------------
 

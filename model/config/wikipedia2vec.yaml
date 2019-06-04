@@ -1,0 +1,5 @@
+Wikipedia2Vec:
+  source: 'model/wikipedia2vec/enwiki_20180420_100d.txt'
+  model_type: 'Word2Vec'
+  loader: 'Wiki2Vec_txt'
+  entity_prefix: 'ENTITY/'

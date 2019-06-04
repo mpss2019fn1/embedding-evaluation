@@ -1,0 +1,4 @@
+Masterproject:
+  source: 'model/masterproject/doc2vec.binary.model'
+  model_type: 'Doc2Vec'
+  loader: 'Doc2Vec_binary'
