@@ -17,7 +17,9 @@ sys.path.insert(0, os.path.abspath('..'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'embedding-evaluation'
+project = 'Embedding Evaluation'
+copyright = '2019, mpss2019fn1'
+author = 'mpss2019fn1'
 
 
 # -- General configuration ---------------------------------------------------
