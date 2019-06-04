@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Tasks Collection &#8212; Embedding Evaluation  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Data Source Module" href="sources.html" />
+    <link rel="prev" title="Metrics" href="metrics.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="tasks-collection">
+<h1>Tasks Collection<a class="headerlink" href="#tasks-collection" title="Permalink to this headline">¶</a></h1>
+<p>Task Collections includes all implemented evaluation Tasks.</p>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+<p>The Framework currently supports Analogy, Neighborhood, Outlier and Similarity Task.</p>
+</div>
+<div class="section" id="module-tasks.analogy_task">
+<span id="tasks-analogy-task-module"></span><h2>tasks.analogy_task module<a class="headerlink" href="#module-tasks.analogy_task" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tasks.analogy_task.AnalogyTask">
+<em class="property">class </em><code class="sig-prename descclassname">tasks.analogy_task.</code><code class="sig-name descname">AnalogyTask</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">csv_wikidata_results</em>, <em class="sig-param">metric</em>, <em class="sig-param">gensim_loader</em>, <em class="sig-param">source</em>, <em class="sig-param">logging=False</em><span class="sig-paren">)</span><a class="headerlink" href="#tasks.analogy_task.AnalogyTask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tasks.task.Task" title="tasks.task.Task"><code class="xref py py-class docutils literal notranslate"><span class="pre">tasks.task.Task</span></code></a></p>
+<dl class="method">
+<dt id="tasks.analogy_task.AnalogyTask.compute">
+<code class="sig-name descname">compute</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#tasks.analogy_task.AnalogyTask.compute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="tasks.analogy_task.AnalogyTask.get_difference_vectors">
+<code class="sig-name descname">get_difference_vectors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tasks.analogy_task.AnalogyTask.get_difference_vectors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-tasks.neighborhood_baseline">
+<span id="tasks-neighborhood-baseline-module"></span><h2>tasks.neighborhood_baseline module<a class="headerlink" href="#module-tasks.neighborhood_baseline" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tasks.neighborhood_baseline.NeighborhoodBaseline">
+<em class="property">class </em><code class="sig-prename descclassname">tasks.neighborhood_baseline.</code><code class="sig-name descname">NeighborhoodBaseline</code><span class="sig-paren">(</span><em class="sig-param">gensim_loader</em><span class="sig-paren">)</span><a class="headerlink" href="#tasks.neighborhood_baseline.NeighborhoodBaseline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="tasks.neighborhood_baseline.NeighborhoodBaseline.compute">
+<code class="sig-name descname">compute</code><span class="sig-paren">(</span><em class="sig-param">sample_size</em><span class="sig-paren">)</span><a class="headerlink" href="#tasks.neighborhood_baseline.NeighborhoodBaseline.compute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes a baseline for living people with sample_size many people
+:return:</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-tasks.neighborhood_task">
+<span id="tasks-neighborhood-task-module"></span><h2>tasks.neighborhood_task module<a class="headerlink" href="#module-tasks.neighborhood_task" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tasks.neighborhood_task.NeighborhoodTask">
+<em class="property">class </em><code class="sig-prename descclassname">tasks.neighborhood_task.</code><code class="sig-name descname">NeighborhoodTask</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">csv_wikidata_results</em>, <em class="sig-param">metric</em>, <em class="sig-param">gensim_loader</em>, <em class="sig-param">source</em>, <em class="sig-param">logging=False</em><span class="sig-paren">)</span><a class="headerlink" href="#tasks.neighborhood_task.NeighborhoodTask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tasks.task.Task" title="tasks.task.Task"><code class="xref py py-class docutils literal notranslate"><span class="pre">tasks.task.Task</span></code></a></p>
+<dl class="method">
+<dt id="tasks.neighborhood_task.NeighborhoodTask.compute">
+<code class="sig-name descname">compute</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#tasks.neighborhood_task.NeighborhoodTask.compute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-tasks.similarity_task">
+<span id="tasks-similarity-task-module"></span><h2>tasks.similarity_task module<a class="headerlink" href="#module-tasks.similarity_task" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tasks.similarity_task.SimilarityTask">
+<em class="property">class </em><code class="sig-prename descclassname">tasks.similarity_task.</code><code class="sig-name descname">SimilarityTask</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">csv_wikidata_results</em>, <em class="sig-param">metric</em>, <em class="sig-param">gensim_loader</em>, <em class="sig-param">source</em>, <em class="sig-param">logging=False</em><span class="sig-paren">)</span><a class="headerlink" href="#tasks.similarity_task.SimilarityTask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tasks.task.Task" title="tasks.task.Task"><code class="xref py py-class docutils literal notranslate"><span class="pre">tasks.task.Task</span></code></a></p>
+<dl class="method">
+<dt id="tasks.similarity_task.SimilarityTask.compute">
+<code class="sig-name descname">compute</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#tasks.similarity_task.SimilarityTask.compute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-tasks.task">
+<span id="tasks-task-module"></span><h2>tasks.task module<a class="headerlink" href="#module-tasks.task" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tasks.task.Task">
+<em class="property">class </em><code class="sig-prename descclassname">tasks.task.</code><code class="sig-name descname">Task</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">csv_wikidata_results</em>, <em class="sig-param">metric</em>, <em class="sig-param">gensim_loader</em>, <em class="sig-param">source</em>, <em class="sig-param">logging=False</em><span class="sig-paren">)</span><a class="headerlink" href="#tasks.task.Task" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="method">
+<dt id="tasks.task.Task.compute">
+<em class="property">abstract </em><code class="sig-name descname">compute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tasks.task.Task.compute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="tasks.task.Task.configuration">
+<em class="property">property </em><code class="sig-name descname">configuration</code><a class="headerlink" href="#tasks.task.Task.configuration" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-tasks">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-tasks" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tasks.AnalogyTask">
+<em class="property">class </em><code class="sig-prename descclassname">tasks.</code><code class="sig-name descname">AnalogyTask</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">csv_wikidata_results</em>, <em class="sig-param">metric</em>, <em class="sig-param">gensim_loader</em>, <em class="sig-param">source</em>, <em class="sig-param">logging=False</em><span class="sig-paren">)</span><a class="headerlink" href="#tasks.AnalogyTask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tasks.task.Task" title="tasks.task.Task"><code class="xref py py-class docutils literal notranslate"><span class="pre">tasks.task.Task</span></code></a></p>
+<dl class="method">
+<dt id="tasks.AnalogyTask.compute">
+<code class="sig-name descname">compute</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#tasks.AnalogyTask.compute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="tasks.AnalogyTask.get_difference_vectors">
+<code class="sig-name descname">get_difference_vectors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tasks.AnalogyTask.get_difference_vectors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="tasks.NeighborhoodTask">
+<em class="property">class </em><code class="sig-prename descclassname">tasks.</code><code class="sig-name descname">NeighborhoodTask</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">csv_wikidata_results</em>, <em class="sig-param">metric</em>, <em class="sig-param">gensim_loader</em>, <em class="sig-param">source</em>, <em class="sig-param">logging=False</em><span class="sig-paren">)</span><a class="headerlink" href="#tasks.NeighborhoodTask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tasks.task.Task" title="tasks.task.Task"><code class="xref py py-class docutils literal notranslate"><span class="pre">tasks.task.Task</span></code></a></p>
+<dl class="method">
+<dt id="tasks.NeighborhoodTask.compute">
+<code class="sig-name descname">compute</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#tasks.NeighborhoodTask.compute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="tasks.SimilarityTask">
+<em class="property">class </em><code class="sig-prename descclassname">tasks.</code><code class="sig-name descname">SimilarityTask</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">csv_wikidata_results</em>, <em class="sig-param">metric</em>, <em class="sig-param">gensim_loader</em>, <em class="sig-param">source</em>, <em class="sig-param">logging=False</em><span class="sig-paren">)</span><a class="headerlink" href="#tasks.SimilarityTask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#tasks.task.Task" title="tasks.task.Task"><code class="xref py py-class docutils literal notranslate"><span class="pre">tasks.task.Task</span></code></a></p>
+<dl class="method">
+<dt id="tasks.SimilarityTask.compute">
+<code class="sig-name descname">compute</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#tasks.SimilarityTask.compute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="data">
+<dt id="tasks.task_mapping">
+<code class="sig-prename descclassname">tasks.</code><code class="sig-name descname">task_mapping</code><em class="property"> = {'analogy': &lt;class 'tasks.analogy_task.AnalogyTask'&gt;, 'neighborhood': &lt;class 'tasks.neighborhood_task.NeighborhoodTask'&gt;, 'similarity': &lt;class 'tasks.similarity_task.SimilarityTask'&gt;}</em><a class="headerlink" href="#tasks.task_mapping" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Embedding Evaluation</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="evaluation.html">Evaluation Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metrics.html">Metrics</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tasks Collection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-tasks.analogy_task">tasks.analogy_task module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-tasks.neighborhood_baseline">tasks.neighborhood_baseline module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-tasks.neighborhood_task">tasks.neighborhood_task module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-tasks.similarity_task">tasks.similarity_task module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-tasks.task">tasks.task module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-tasks">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sources.html">Data Source Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization.html">Visualization Tools</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="metrics.html" title="previous chapter">Metrics</a></li>
+      <li>Next: <a href="sources.html" title="next chapter">Data Source Module</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, mpss2019fn1.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/tasks.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

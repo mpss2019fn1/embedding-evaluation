@@ -1,0 +1,433 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Data Source Module &#8212; Embedding Evaluation  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Visualization Tools" href="visualization.html" />
+    <link rel="prev" title="Tasks Collection" href="tasks.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="data-source-module">
+<h1>Data Source Module<a class="headerlink" href="#data-source-module" title="Permalink to this headline">¶</a></h1>
+<p>The Source module implements the methods to parse a task config, and maps the specific tasks with the metrics
+according to the config as well as creating a linking to the knowledge base
+Submodules
+———-
+Currently the Framework only supports CSV Source</p>
+<div class="section" id="module-sources.csv_source">
+<span id="sources-csvsource-module"></span><h2>sources.CSVSource module<a class="headerlink" href="#module-sources.csv_source" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="sources.csv_source.CSVSource">
+<em class="property">class </em><code class="sig-prename descclassname">sources.csv_source.</code><code class="sig-name descname">CSVSource</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#sources.csv_source.CSVSource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sources.source.Source" title="sources.source.Source"><code class="xref py py-class docutils literal notranslate"><span class="pre">sources.source.Source</span></code></a></p>
+<dl class="attribute">
+<dt id="sources.csv_source.CSVSource.source_type">
+<code class="sig-name descname">source_type</code><em class="property"> = 'csv'</em><a class="headerlink" href="#sources.csv_source.CSVSource.source_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-sources.source">
+<span id="sources-source-module"></span><h2>sources.source module<a class="headerlink" href="#module-sources.source" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="sources.source.Source">
+<em class="property">class </em><code class="sig-prename descclassname">sources.source.</code><code class="sig-name descname">Source</code><span class="sig-paren">(</span><em class="sig-param">source_config</em>, <em class="sig-param">logger</em>, <em class="sig-param">gensim_loader=None</em><span class="sig-paren">)</span><a class="headerlink" href="#sources.source.Source" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="class">
+<dt id="sources.source.Source.Statistics">
+<em class="property">class </em><code class="sig-name descname">Statistics</code><span class="sig-paren">(</span><em class="sig-param">entries_found: int</em>, <em class="sig-param">entry_misses: int</em><span class="sig-paren">)</span><a class="headerlink" href="#sources.source.Source.Statistics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sources.source.Source.create_entry">
+<code class="sig-name descname">create_entry</code><span class="sig-paren">(</span><em class="sig-param">key</em>, <em class="sig-param">value_type</em><span class="sig-paren">)</span><a class="headerlink" href="#sources.source.Source.create_entry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="sources.source.Source.from_config">
+<em class="property">classmethod </em><code class="sig-name descname">from_config</code><span class="sig-paren">(</span><em class="sig-param">source_config</em>, <em class="sig-param">*args</em><span class="sig-paren">)</span><a class="headerlink" href="#sources.source.Source.from_config" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="sources.source.Source.get_entity_vector">
+<code class="sig-name descname">get_entity_vector</code><span class="sig-paren">(</span><em class="sig-param">entry</em><span class="sig-paren">)</span><a class="headerlink" href="#sources.source.Source.get_entity_vector" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="sources.source.Source.get_word_vector">
+<code class="sig-name descname">get_word_vector</code><span class="sig-paren">(</span><em class="sig-param">entry</em><span class="sig-paren">)</span><a class="headerlink" href="#sources.source.Source.get_word_vector" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="sources.source.Source.source_type">
+<em class="property">abstract property </em><code class="sig-name descname">source_type</code><a class="headerlink" href="#sources.source.Source.source_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>classmethod(function) -&gt; method</p>
+<p>Convert a function to be a class method.</p>
+<p>A class method receives the class as implicit first argument,
+just like an instance method receives the instance.
+To declare a class method, use this idiom:</p>
+<blockquote>
+<div><dl>
+<dt>class C:</dt><dd><p>&#64;classmethod
+def f(cls, arg1, arg2, …):</p>
+<blockquote>
+<div><p>…</p>
+</div></blockquote>
+</dd>
+</dl>
+</div></blockquote>
+<p>It can be called either on the class (e.g. C.f()) or on an instance
+(e.g. C().f()).  The instance is ignored except for its class.
+If a class method is called for a derived class, the derived class
+object is passed as the implied first argument.</p>
+<p>Class methods are different than C++ or Java static methods.
+If you want those, see the staticmethod builtin.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="sources.source.dataclass">
+<code class="sig-prename descclassname">sources.source.</code><code class="sig-name descname">dataclass</code><span class="sig-paren">(</span><em class="sig-param">maybe_cls=None</em>, <em class="sig-param">these=None</em>, <em class="sig-param">repr_ns=None</em>, <em class="sig-param">repr=True</em>, <em class="sig-param">cmp=True</em>, <em class="sig-param">hash=None</em>, <em class="sig-param">init=True</em>, <em class="sig-param">slots=False</em>, <em class="sig-param">frozen=False</em>, <em class="sig-param">weakref_slot=True</em>, <em class="sig-param">str=False</em>, <em class="sig-param">*</em>, <em class="sig-param">auto_attribs=True</em>, <em class="sig-param">kw_only=False</em>, <em class="sig-param">cache_hash=False</em>, <em class="sig-param">auto_exc=False</em><span class="sig-paren">)</span><a class="headerlink" href="#sources.source.dataclass" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class decorator that adds <a class="reference external" href="https://wiki.python.org/moin/DunderAlias">dunder</a>-methods according to the
+specified attributes using <code class="xref py py-func docutils literal notranslate"><span class="pre">attr.ib()</span></code> or the <em>these</em> argument.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>these</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code> of <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code> to <code class="xref py py-func docutils literal notranslate"><span class="pre">attr.ib()</span></code>) – <p>A dictionary of name to <code class="xref py py-func docutils literal notranslate"><span class="pre">attr.ib()</span></code> mappings.  This is
+useful to avoid the definition of your attributes within the class body
+because you can’t (e.g. if you want to add <code class="docutils literal notranslate"><span class="pre">__repr__</span></code> methods to
+Django models) or don’t want to.</p>
+<p>If <em>these</em> is not <code class="docutils literal notranslate"><span class="pre">None</span></code>, <code class="docutils literal notranslate"><span class="pre">attrs</span></code> will <em>not</em> search the class body
+for attributes and will <em>not</em> remove any attributes from it.</p>
+<p>If <em>these</em> is an ordered dict (<code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code> on Python 3.6+,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">collections.OrderedDict</span></code> otherwise), the order is deduced from
+the order of the attributes inside <em>these</em>.  Otherwise the order
+of the definition of the attributes is used.</p>
+</p></li>
+<li><p><strong>repr_ns</strong> (<em>str</em>) – When using nested classes, there’s no way in Python 2
+to automatically detect that.  Therefore it’s possible to set the
+namespace explicitly for a more meaningful <code class="docutils literal notranslate"><span class="pre">repr</span></code> output.</p></li>
+<li><p><strong>repr</strong> (<em>bool</em>) – Create a <code class="docutils literal notranslate"><span class="pre">__repr__</span></code> method with a human readable
+representation of <code class="docutils literal notranslate"><span class="pre">attrs</span></code> attributes..</p></li>
+<li><p><strong>str</strong> (<em>bool</em>) – Create a <code class="docutils literal notranslate"><span class="pre">__str__</span></code> method that is identical to
+<code class="docutils literal notranslate"><span class="pre">__repr__</span></code>.  This is usually not necessary except for
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code>s.</p></li>
+<li><p><strong>cmp</strong> (<em>bool</em>) – Create <code class="docutils literal notranslate"><span class="pre">__eq__</span></code>, <code class="docutils literal notranslate"><span class="pre">__ne__</span></code>, <code class="docutils literal notranslate"><span class="pre">__lt__</span></code>, <code class="docutils literal notranslate"><span class="pre">__le__</span></code>,
+<code class="docutils literal notranslate"><span class="pre">__gt__</span></code>, and <code class="docutils literal notranslate"><span class="pre">__ge__</span></code> methods that compare the class as if it were
+a tuple of its <code class="docutils literal notranslate"><span class="pre">attrs</span></code> attributes.  But the attributes are <em>only</em>
+compared, if the types of both classes are <em>identical</em>!</p></li>
+<li><p><strong>hash</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code> or <code class="docutils literal notranslate"><span class="pre">None</span></code>) – <p>If <code class="docutils literal notranslate"><span class="pre">None</span></code> (default), the <code class="docutils literal notranslate"><span class="pre">__hash__</span></code> method is generated
+according how <em>cmp</em> and <em>frozen</em> are set.</p>
+<ol class="arabic simple">
+<li><p>If <em>both</em> are True, <code class="docutils literal notranslate"><span class="pre">attrs</span></code> will generate a <code class="docutils literal notranslate"><span class="pre">__hash__</span></code> for you.</p></li>
+<li><p>If <em>cmp</em> is True and <em>frozen</em> is False, <code class="docutils literal notranslate"><span class="pre">__hash__</span></code> will be set to
+None, marking it unhashable (which it is).</p></li>
+<li><p>If <em>cmp</em> is False, <code class="docutils literal notranslate"><span class="pre">__hash__</span></code> will be left untouched meaning the
+<code class="docutils literal notranslate"><span class="pre">__hash__</span></code> method of the base class will be used (if base class is
+<code class="docutils literal notranslate"><span class="pre">object</span></code>, this means it will fall back to id-based hashing.).</p></li>
+</ol>
+<p>Although not recommended, you can decide for yourself and force
+<code class="docutils literal notranslate"><span class="pre">attrs</span></code> to create one (e.g. if the class is immutable even though you
+didn’t freeze it programmatically) by passing <code class="docutils literal notranslate"><span class="pre">True</span></code> or not.  Both of
+these cases are rather special and should be used carefully.</p>
+<p>See the <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#object.__hash__">Python documentation </a>
+and the <a class="reference external" href="https://github.com/python-attrs/attrs/issues/136">GitHub issue that led to the default behavior </a> for more details.</p>
+</p></li>
+<li><p><strong>init</strong> (<em>bool</em>) – Create a <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method that initializes the
+<code class="docutils literal notranslate"><span class="pre">attrs</span></code> attributes.  Leading underscores are stripped for the
+argument name.  If a <code class="docutils literal notranslate"><span class="pre">__attrs_post_init__</span></code> method exists on the
+class, it will be called after the class is fully initialized.</p></li>
+<li><p><strong>slots</strong> (<em>bool</em>) – Create a <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#slots">slots</a>-style class that’s more
+memory-efficient.  See <span class="xref std std-ref">slots</span> for further ramifications.</p></li>
+<li><p><strong>frozen</strong> (<em>bool</em>) – <p>Make instances immutable after initialization.  If
+someone attempts to modify a frozen instance,
+<code class="xref py py-exc docutils literal notranslate"><span class="pre">attr.exceptions.FrozenInstanceError</span></code> is raised.</p>
+<p>Please note:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>This is achieved by installing a custom <code class="docutils literal notranslate"><span class="pre">__setattr__</span></code> method
+on your class so you can’t implement an own one.</p></li>
+<li><p>True immutability is impossible in Python.</p></li>
+<li><p>This <em>does</em> have a minor a runtime performance <span class="xref std std-ref">impact</span> when initializing new instances.  In other words:
+<code class="docutils literal notranslate"><span class="pre">__init__</span></code> is slightly slower with <code class="docutils literal notranslate"><span class="pre">frozen=True</span></code>.</p></li>
+<li><p>If a class is frozen, you cannot modify <code class="docutils literal notranslate"><span class="pre">self</span></code> in
+<code class="docutils literal notranslate"><span class="pre">__attrs_post_init__</span></code> or a self-written <code class="docutils literal notranslate"><span class="pre">__init__</span></code>. You can
+circumvent that limitation by using
+<code class="docutils literal notranslate"><span class="pre">object.__setattr__(self,</span> <span class="pre">&quot;attribute_name&quot;,</span> <span class="pre">value)</span></code>.</p></li>
+</ol>
+</div></blockquote>
+</p></li>
+<li><p><strong>weakref_slot</strong> (<em>bool</em>) – Make instances weak-referenceable.  This has no
+effect unless <code class="docutils literal notranslate"><span class="pre">slots</span></code> is also enabled.</p></li>
+<li><p><strong>auto_attribs</strong> (<em>bool</em>) – <p>If True, collect <a class="reference external" href="https://www.python.org/dev/peps/pep-0526/">PEP 526</a>-annotated attributes
+(Python 3.6 and later only) from the class body.</p>
+<p>In this case, you <strong>must</strong> annotate every field.  If <code class="docutils literal notranslate"><span class="pre">attrs</span></code>
+encounters a field that is set to an <code class="xref py py-func docutils literal notranslate"><span class="pre">attr.ib()</span></code> but lacks a type
+annotation, an <code class="xref py py-exc docutils literal notranslate"><span class="pre">attr.exceptions.UnannotatedAttributeError</span></code> is
+raised.  Use <code class="docutils literal notranslate"><span class="pre">field_name:</span> <span class="pre">typing.Any</span> <span class="pre">=</span> <span class="pre">attr.ib(...)</span></code> if you don’t
+want to set a type.</p>
+<p>If you assign a value to those attributes (e.g. <code class="docutils literal notranslate"><span class="pre">x:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">42</span></code>), that
+value becomes the default value like if it were passed using
+<code class="docutils literal notranslate"><span class="pre">attr.ib(default=42)</span></code>.  Passing an instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">Factory</span></code> also
+works as expected.</p>
+<p>Attributes annotated as <code class="xref py py-data docutils literal notranslate"><span class="pre">typing.ClassVar</span></code> are <strong>ignored</strong>.</p>
+</p></li>
+<li><p><strong>kw_only</strong> (<em>bool</em>) – Make all attributes keyword-only (Python 3+)
+in the generated <code class="docutils literal notranslate"><span class="pre">__init__</span></code> (if <code class="docutils literal notranslate"><span class="pre">init</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code>, this
+parameter is ignored).</p></li>
+<li><p><strong>cache_hash</strong> (<em>bool</em>) – Ensure that the object’s hash code is computed
+only once and stored on the object.  If this is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>,
+hashing must be either explicitly or implicitly enabled for this
+class.  If the hash code is cached, avoid any reassignments of
+fields involved in hash code computation or mutations of the objects
+those fields point to after object creation.  If such changes occur,
+the behavior of the object’s hash code is undefined.</p></li>
+<li><p><strong>auto_exc</strong> (<em>bool</em>) – <p>If the class subclasses <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseException</span></code>
+(which implicitly includes any subclass of any exception), the
+following happens to behave like a well-behaved Python exceptions
+class:</p>
+<ul>
+<li><p>the values for <em>cmp</em> and <em>hash</em> are ignored and the instances compare
+and hash by the instance’s ids (N.B. <code class="docutils literal notranslate"><span class="pre">attrs</span></code> will <em>not</em> remove
+existing implementations of <code class="docutils literal notranslate"><span class="pre">__hash__</span></code> or the equality methods. It
+just won’t add own ones.),</p></li>
+<li><p>all attributes that are either passed into <code class="docutils literal notranslate"><span class="pre">__init__</span></code> or have a
+default value are additionally available as a tuple in the <code class="docutils literal notranslate"><span class="pre">args</span></code>
+attribute,</p></li>
+<li><p>the value of <em>str</em> is ignored leaving <code class="docutils literal notranslate"><span class="pre">__str__</span></code> to base classes.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 16.0.0: </span><em>slots</em></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 16.1.0: </span><em>frozen</em></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 16.3.0: </span><em>str</em></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 16.3.0: </span>Support for <code class="docutils literal notranslate"><span class="pre">__attrs_post_init__</span></code>.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 17.1.0: </span><em>hash</em> supports <code class="docutils literal notranslate"><span class="pre">None</span></code> as value which is also the default now.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 17.3.0: </span><em>auto_attribs</em></p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 18.1.0: </span>If <em>these</em> is passed, no attributes are deleted from the class body.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 18.1.0: </span>If <em>these</em> is ordered, the order is retained.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 18.2.0: </span><em>weakref_slot</em></p>
+</div>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 18.2.0: </span><code class="docutils literal notranslate"><span class="pre">__lt__</span></code>, <code class="docutils literal notranslate"><span class="pre">__le__</span></code>, <code class="docutils literal notranslate"><span class="pre">__gt__</span></code>, and <code class="docutils literal notranslate"><span class="pre">__ge__</span></code> now raise a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">DeprecationWarning</span></code> if the classes compared are subclasses of
+each other. <code class="docutils literal notranslate"><span class="pre">__eq</span></code> and <code class="docutils literal notranslate"><span class="pre">__ne__</span></code> never tried to compared subclasses
+to each other.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 18.2.0: </span><em>kw_only</em></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 18.2.0: </span><em>cache_hash</em></p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 19.1.0: </span><em>auto_exc</em></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="sources.source.log_unknown_entries">
+<code class="sig-prename descclassname">sources.source.</code><code class="sig-name descname">log_unknown_entries</code><span class="sig-paren">(</span><em class="sig-param">f</em><span class="sig-paren">)</span><a class="headerlink" href="#sources.source.log_unknown_entries" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-sources">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-sources" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="sources.Source">
+<em class="property">class </em><code class="sig-prename descclassname">sources.</code><code class="sig-name descname">Source</code><span class="sig-paren">(</span><em class="sig-param">source_config</em>, <em class="sig-param">logger</em>, <em class="sig-param">gensim_loader=None</em><span class="sig-paren">)</span><a class="headerlink" href="#sources.Source" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="class">
+<dt id="sources.Source.Statistics">
+<em class="property">class </em><code class="sig-name descname">Statistics</code><span class="sig-paren">(</span><em class="sig-param">entries_found: int</em>, <em class="sig-param">entry_misses: int</em><span class="sig-paren">)</span><a class="headerlink" href="#sources.Source.Statistics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sources.Source.create_entry">
+<code class="sig-name descname">create_entry</code><span class="sig-paren">(</span><em class="sig-param">key</em>, <em class="sig-param">value_type</em><span class="sig-paren">)</span><a class="headerlink" href="#sources.Source.create_entry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="sources.Source.from_config">
+<em class="property">classmethod </em><code class="sig-name descname">from_config</code><span class="sig-paren">(</span><em class="sig-param">source_config</em>, <em class="sig-param">*args</em><span class="sig-paren">)</span><a class="headerlink" href="#sources.Source.from_config" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="sources.Source.get_entity_vector">
+<code class="sig-name descname">get_entity_vector</code><span class="sig-paren">(</span><em class="sig-param">entry</em><span class="sig-paren">)</span><a class="headerlink" href="#sources.Source.get_entity_vector" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="sources.Source.get_word_vector">
+<code class="sig-name descname">get_word_vector</code><span class="sig-paren">(</span><em class="sig-param">entry</em><span class="sig-paren">)</span><a class="headerlink" href="#sources.Source.get_word_vector" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="sources.Source.source_type">
+<em class="property">abstract property </em><code class="sig-name descname">source_type</code><a class="headerlink" href="#sources.Source.source_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>classmethod(function) -&gt; method</p>
+<p>Convert a function to be a class method.</p>
+<p>A class method receives the class as implicit first argument,
+just like an instance method receives the instance.
+To declare a class method, use this idiom:</p>
+<blockquote>
+<div><dl>
+<dt>class C:</dt><dd><p>&#64;classmethod
+def f(cls, arg1, arg2, …):</p>
+<blockquote>
+<div><p>…</p>
+</div></blockquote>
+</dd>
+</dl>
+</div></blockquote>
+<p>It can be called either on the class (e.g. C.f()) or on an instance
+(e.g. C().f()).  The instance is ignored except for its class.
+If a class method is called for a derived class, the derived class
+object is passed as the implied first argument.</p>
+<p>Class methods are different than C++ or Java static methods.
+If you want those, see the staticmethod builtin.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sources.CSVSource">
+<em class="property">class </em><code class="sig-prename descclassname">sources.</code><code class="sig-name descname">CSVSource</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#sources.CSVSource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sources.source.Source" title="sources.source.Source"><code class="xref py py-class docutils literal notranslate"><span class="pre">sources.source.Source</span></code></a></p>
+<dl class="attribute">
+<dt id="sources.CSVSource.source_type">
+<code class="sig-name descname">source_type</code><em class="property"> = 'csv'</em><a class="headerlink" href="#sources.CSVSource.source_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Embedding Evaluation</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="evaluation.html">Evaluation Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metrics.html">Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tasks.html">Tasks Collection</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Data Source Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-sources.csv_source">sources.CSVSource module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-sources.source">sources.source module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-sources">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="visualization.html">Visualization Tools</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="tasks.html" title="previous chapter">Tasks Collection</a></li>
+      <li>Next: <a href="visualization.html" title="next chapter">Visualization Tools</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, mpss2019fn1.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/sources.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

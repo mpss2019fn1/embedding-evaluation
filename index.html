@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Welcome to embedding-evaluation’s documentation! &#8212; embedding-evaluation  documentation</title>
+    <title>A Simple Framework to Mine Insights from Natural Language Model &#8212; Embedding Evaluation  documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -14,7 +14,7 @@
     <script type="text/javascript" src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Metrics" href="metrics.html" />
+    <link rel="next" title="Evaluation Pipeline" href="evaluation.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -31,12 +31,39 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="welcome-to-embedding-evaluation-s-documentation">
-<h1>Welcome to embedding-evaluation’s documentation!<a class="headerlink" href="#welcome-to-embedding-evaluation-s-documentation" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="a-simple-framework-to-mine-insights-from-natural-language-model">
+<h1>A Simple Framework to Mine Insights from Natural Language Model<a class="headerlink" href="#a-simple-framework-to-mine-insights-from-natural-language-model" title="Permalink to this headline">¶</a></h1>
+<p>We want to support the process of interpreting learned characteristics of Natural Language Embeddings.
+We aim to shed light on covered and missed semantics using a knowledge base.</p>
+<p>Another key contribution is it to map dimensions to semantics or facts.</p>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="evaluation.html">Evaluation Pipeline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="metrics.html">Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tasks.html">Tasks Collection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#module-tasks.analogy_task">tasks.analogy_task module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#module-tasks.neighborhood_baseline">tasks.neighborhood_baseline module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#module-tasks.neighborhood_task">tasks.neighborhood_task module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#module-tasks.similarity_task">tasks.similarity_task module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#module-tasks.task">tasks.task module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#module-tasks">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sources.html">Data Source Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sources.html#module-sources.csv_source">sources.CSVSource module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sources.html#module-sources.source">sources.source module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sources.html#module-sources">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="visualization.html">Visualization Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="visualization.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualization.html#module-visualization.similarity_visualizer">visualization.similarity_visualizer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualization.html#module-visualization.visualizer">visualization.visualizer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualization.html#module-visualization">Module contents</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -56,7 +83,7 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="#">embedding-evaluation</a></h1>
+<h1 class="logo"><a href="#">Embedding Evaluation</a></h1>
 
 
 
@@ -68,14 +95,18 @@
 <h3>Navigation</h3>
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="evaluation.html">Evaluation Pipeline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="metrics.html">Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tasks.html">Tasks Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sources.html">Data Source Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization.html">Visualization Tools</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="#">Documentation overview</a><ul>
-      <li>Next: <a href="metrics.html" title="next chapter">Metrics</a></li>
+      <li>Next: <a href="evaluation.html" title="next chapter">Evaluation Pipeline</a></li>
   </ul></li>
 </ul>
 </div>
@@ -102,7 +133,7 @@
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;.
+      &copy;2019, mpss2019fn1.
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.0</a>
