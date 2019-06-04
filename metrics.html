@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Metrics &#8212; embedding-evaluation  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to embedding-evaluation’s documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-metrics">
+<span id="metrics"></span><h1>Metrics<a class="headerlink" href="#module-metrics" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="metrics.cosine_similarity">
+<code class="sig-prename descclassname">metrics.</code><code class="sig-name descname">cosine_similarity</code><span class="sig-paren">(</span><em class="sig-param">vector1</em>, <em class="sig-param">vector2</em><span class="sig-paren">)</span><a class="headerlink" href="#metrics.cosine_similarity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Metric to calcualte the cosine similarity between two vectors.</p>
+<p>For example used for the SimilarityTask.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vector1</strong> – input vector 1</p></li>
+<li><p><strong>vector2</strong> – input vector 2</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>cosine similarity between input vectors between -1 and 1</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="metrics.mean_cosine_similarity">
+<code class="sig-prename descclassname">metrics.</code><code class="sig-name descname">mean_cosine_similarity</code><span class="sig-paren">(</span><em class="sig-param">vectors</em><span class="sig-paren">)</span><a class="headerlink" href="#metrics.mean_cosine_similarity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Metric to compute the mean cosine similarity of the given vectors.</p>
+<p>For example used for the AnalogyTask.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>vectors</strong> – input vectors</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>mean cosine similarity</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="metrics.mean_pairwise_distance">
+<code class="sig-prename descclassname">metrics.</code><code class="sig-name descname">mean_pairwise_distance</code><span class="sig-paren">(</span><em class="sig-param">vectors</em><span class="sig-paren">)</span><a class="headerlink" href="#metrics.mean_pairwise_distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Metric to compute the mean pairwise distance.</p>
+<p>For large input sizes use the mean_squared_pairwise_distance.</p>
+<p>For example used for the Neighborhood Task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>vectors</strong> – input vectors</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>mean pairwise distance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="metrics.mean_squared_pairwise_distance">
+<code class="sig-prename descclassname">metrics.</code><code class="sig-name descname">mean_squared_pairwise_distance</code><span class="sig-paren">(</span><em class="sig-param">vectors</em><span class="sig-paren">)</span><a class="headerlink" href="#metrics.mean_squared_pairwise_distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Metric to compute the mean squared pairwise distance.
+It is equivalent to calculating the variance with n-1.</p>
+<p>For example used for the Neighborhood Task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>vectors</strong> – input vectors</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>mean squared pairwise distance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="metrics.metric">
+<code class="sig-prename descclassname">metrics.</code><code class="sig-name descname">metric</code><span class="sig-paren">(</span><em class="sig-param">func</em><span class="sig-paren">)</span><a class="headerlink" href="#metrics.metric" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="data">
+<dt id="metrics.metrics">
+<code class="sig-prename descclassname">metrics.</code><code class="sig-name descname">metrics</code><em class="property"> = {'cosine_similarity': &lt;function cosine_similarity&gt;, 'mean_cosine_similarity': &lt;function mean_cosine_similarity&gt;, 'mean_pairwise_distance': &lt;function mean_pairwise_distance&gt;, 'mean_squared_pairwise_distance': &lt;function mean_squared_pairwise_distance&gt;}</em><a class="headerlink" href="#metrics.metrics" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">embedding-evaluation</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Metrics</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to embedding-evaluation’s documentation!</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/metrics.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
