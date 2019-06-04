@@ -11,6 +11,11 @@ from cli_logger import CLILogger
 
 
 def main(args):
+    """
+    args contains the path to the task configuration as well as embedding file.
+    :param args:
+    :return:
+    """
     gensim_loader = VectorLoader(args.embedding_file)
     with open(args.task_config, 'r') as stream:
         data_loaded = yaml.safe_load(stream)
