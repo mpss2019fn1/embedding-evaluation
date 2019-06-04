@@ -25,14 +25,12 @@ if __name__ == '__main__':
         '--input-file',
         type=str,
         help='Path to the input file in word2vec format',
-        default='model/fasttext/cc.en.300.bin',
-        required=False,
+        required=True,
     )
     parser.add_argument(
         "--output-file",
         type=str,
         help="Path to the output file",
-        default="output.model",
-        required=False
+        required=True
     )
     main(parser.parse_args())

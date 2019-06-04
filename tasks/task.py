@@ -5,6 +5,7 @@ from sources import Source
 
 
 class Task(ABC):
+
     def __init__(self, name, csv_wikidata_results, metric, gensim_loader, source, logging=False):
         self.name = name
         self.csv_wikidata_results = csv_wikidata_results
