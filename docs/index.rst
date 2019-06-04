@@ -10,6 +10,7 @@ Welcome to embedding-evaluation's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   metrics
 
 
 Indices and tables
