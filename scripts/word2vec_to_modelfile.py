@@ -11,7 +11,7 @@ def main(args):
 
     _ = glove2word2vec(glove_file, tmp_file)
 
-    vectors = KeyedVectors.load_word2vec_format(tmp_file, binary=True)
+    vectors = KeyedVectors.load_word2vec_format(tmp_file)
 
     model = Word2Vec()
     model.wv = vectors
