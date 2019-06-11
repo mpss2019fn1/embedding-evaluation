@@ -1,0 +1,56 @@
+configuration:
+    task_configurations:
+        - similarity:
+            enabled: true
+        - analogy:
+            enabled: true
+        - neighborhood:
+            enabled: false
+        - outlier_detection:
+            enabled: true
+    tests:
+        - {{category_name_#1}}:
+            enabled: true
+            tasks:
+                - similarity:
+                    name: {{similarity_task_name_#1}}
+                    metric: cosine
+                    test_set: {{path_to_test_set_#1}}
+                - similarity:
+                    name: {{similarity_task_name_#2}}
+                    metric: euclidean
+                    test_set: {{path_to_test_set_#2}}
+                - analogy:
+                    name: {{analogy_task_name_#1}}
+                    metric: cosine
+                    test_set: {{path_to_test_set_#3}}
+            categories:
+                - {{sub_category_name_#1}}:
+                    enabled: false
+                    tasks:
+                        - neighborhood:
+                            name: {{neighborhood_task_name_#1}}
+                            metric: euclidean
+                            test_set: {{path_to_test_set_#4}}
+                    categories:
+                - {{sub_category_name_#2}}:
+                    enabled: true
+                    tasks:
+                        - outlier_detection:
+                            name: {{outlier_detection_task_name_#1}}
+                            metric: cosine
+                            test_set: {{path_to_test_set_#5}}
+                    categories:
+        - {{category_name_#2}}:
+            enabled: false
+            tasks:
+            categories:
+                - {{sub_category_name_#3}}:
+                    enabled: true
+                    tasks:
+                        - similarity:
+                            name: {{similarity_task_name_#3}}
+                            metric: euclidean
+                            test_set: {{path_to_test_set_#6}}
+                    categories:
+

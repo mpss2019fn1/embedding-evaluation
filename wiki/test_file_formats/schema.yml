@@ -1,0 +1,58 @@
+definitions:
+
+    configuration:
+        type: object
+        required:
+            - task_configurations
+            - tests
+        properties:
+            task_configurations:
+                type: array
+                items:
+                    $ref: '#/definitions/task_configuration'
+            tests:
+                type: array
+                items:
+                    $ref: '#/definitions/category'
+                
+    task_configuration:
+        type: object
+        required:
+            - enabled
+        properties:
+            enabled:
+                type: boolean
+    
+    category:
+        type: object
+        required:
+            - enabled
+            - tasks
+            - categories
+        properties:
+            enabled:
+                type: boolean
+            tasks:
+                type: array
+                items:
+                    $ref: '#/definitions/task'
+            categories:
+                type: array
+                items:
+                    $ref: '#/definitions/category'
+    
+    task:
+        type: object
+        required:
+            - name
+            - metric
+            - test_set
+        properties:
+            name:
+                type: string
+            metric:
+                type: string
+                enum: [cosine, euclidean]
+            test_set:
+                type: string
+                description: Path to local test-set file.
