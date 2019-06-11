@@ -34,15 +34,22 @@ def main(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        '--task-config',
+        '--test-set-config',
         type=Path,
-        help='Path to the config file',
+        help='Path to the configuration file of the test set',
         required=True
     )
     parser.add_argument(
         "--embedding-file",
         type=Path,
         help="Path to the embedding vector file",
+        required=True
+    )
+
+    parser.add_argument(
+        "--mapping-file",
+        type=Path,
+        help="Path to the file for mapping embedded entities to knowledge base entities",
         required=True
     )
     main(parser.parse_args())
