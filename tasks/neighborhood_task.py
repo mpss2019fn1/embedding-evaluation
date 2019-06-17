@@ -5,7 +5,7 @@ from tasks.task import Task
 class NeighborhoodTask(Task):
 
     @classmethod
-    def __name__(cls):
+    def configuration_task_name(cls):
         return "neighborhood"
 
     def compute(self, *args, **kwargs):

@@ -5,7 +5,7 @@ from .task import Task
 class AnalogyTask(Task):
 
     @classmethod
-    def __name__(cls):
+    def configuration_task_name(cls):
         return "analogy"
 
     def get_difference_vectors(self):

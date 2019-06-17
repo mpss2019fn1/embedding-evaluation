@@ -4,14 +4,18 @@ from pathlib import Path
 
 from file_task_logger import FileTaskLogger, NullFileTaskLogger
 from tasks.metric import Metric
-from tasks.task_type import TaskType
 
 
 class Task(ABC):
+
     LABEL_NAME = "name"
     LABEL_TYPE = "type"
     LABEL_TEST_SET = "test_set"
     LABEL_METRIC = "metric"
+
+    @classmethod
+    def configuration_task_name(cls):
+        raise NotImplementedError
 
     def __init__(self, name, test_set, metric, logging=False):
         self.name = name
@@ -35,14 +39,13 @@ class Task(ABC):
             result_file.write(str(result))
         return result
 
-    @staticmethod
-    def from_task_configuration(configuration):
+    @classmethod
+    def from_task_configuration(cls, configuration):
         name = Task._extract_name(configuration)
-        task_class = TaskType.from_string(configuration[Task.LABEL_TYPE])
         metric = Metric.from_string(configuration[Task.LABEL_METRIC])
         test_set = Task._extract_test_set(configuration)
 
-        return task_class(name, test_set, metric)
+        return cls(name, test_set, metric)
 
     @staticmethod
     def _extract_name(configuration):

@@ -1,6 +1,7 @@
 import logging
 
 from tasks.task import Task
+from tasks.task_type import TaskType
 
 
 class TestCategory:
@@ -27,7 +28,7 @@ class TestCategory:
 
     @staticmethod
     def _extract_enabled(configuration):
-        enabled = configuration[TestCategory.LABEL_ENABLED]
+        enabled = str(configuration[TestCategory.LABEL_ENABLED]).lower()
 
         if enabled not in ["true", "false"]:
             logging.error("The provided boolean value for enabled are not valid")
@@ -49,7 +50,9 @@ class TestCategory:
     def _extract_tasks(configuration):
         tasks = []
         for task in configuration[TestCategory.LABEL_TASKS]:
-            tasks.append(Task.from_task_configuration(task[TestCategory.LABEL_TASK]))
+            task_configuration = task[TestCategory.LABEL_TASK]
+            task_class = TaskType.from_string(task_configuration[Task.LABEL_TYPE])
+            tasks.append(task_class.from_task_configuration(task_configuration))
         return tasks
 
     @staticmethod

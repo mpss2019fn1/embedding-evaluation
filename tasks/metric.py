@@ -8,7 +8,9 @@ class Metric(Enum):
 
     @classmethod
     def from_string(cls, metric):
-        if metric not in Metric:
-            logging.error(f"Unsupported metric type {metric}")
-            raise KeyError
-        return Metric[metric]
+        for member in Metric:
+            if member.value == metric:
+                return member
+
+        logging.error(f"Unsupported metric type {metric}")
+        raise KeyError

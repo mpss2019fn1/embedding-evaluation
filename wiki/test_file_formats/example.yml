@@ -14,58 +14,58 @@ configuration:
             enabled: true
     categories:
         - category:
-            name: {{category_name_#1}}
+            name: Geography
             enabled: true
             tasks:
                 - task:
-                    name: {{similarity_task_name_#1}}
+                    name: is_conutry_similar_cosine
                     type: similarity
                     metric: cosine
-                    test_set: {{path_to_test_set_#1}}
+                    test_set: is_conutry_similar/data.csv
                 - task:
-                    name: {{similarity_task_name_#2}}
+                    name: is_conutry_similar_euclidean
                     type: similarity
                     metric: euclidean
-                    test_set: {{path_to_test_set_#2}}
+                    test_set: is_conutry_similar/data.csv
                 - task:
-                    name: {{analogy_task_name_#1}}
+                    name: is_capital_of
                     type: analogy
                     metric: cosine
-                    test_set: {{path_to_test_set_#3}}
+                    test_set: is_capital_of/data.csv
             categories:
                 - category:
-                    name: {{sub_category_name_#1}}
+                    name: Europe
                     enabled: false
                     tasks:
                         - task:
-                            name: {{neighborhood_task_name_#1}}
+                            name: is_capital_of
                             type: neighborhood
                             metric: euclidean
-                            test_set: {{path_to_test_set_#4}}
+                            test_set: is_capital_of/data.csv
                     categories:
                 - category:
-                    name: {{sub_category_name_#2}}
+                    name: North_America
                     enabled: true
                     tasks:
                         - task:
-                            name: {{outlier_detection_task_name_#1}}
+                            name: is_capital_of
                             type: outlier_detection
                             metric: cosine
-                            test_set: {{path_to_test_set_#5}}
+                            test_set: is_capital_of/data.csv
                     categories:
         - category:
-            name: {{category_name_#2}}
+            name: Food
             enabled: false
             tasks:
             categories:
                 - category:
-                    name: {{sub_category_name_#3}}
+                    name: Meat
                     enabled: true
                     tasks:
                         - task:
-                            name: {{similarity_task_name_#3}}
+                            name: is_similar_food
                             type: similarity
                             metric: euclidean
-                            test_set: {{path_to_test_set_#6}}
+                            test_set: food/data.csv
                     categories:
 

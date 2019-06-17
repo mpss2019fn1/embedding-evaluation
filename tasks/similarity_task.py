@@ -8,9 +8,8 @@ from .task import Task
 class SimilarityTask(Task):
 
     @classmethod
-    def __name__(cls):
+    def configuration_task_name(cls):
         return "similarity"
-
 
     def compute(self, *args, **kwargs):
         our_similarities = []
