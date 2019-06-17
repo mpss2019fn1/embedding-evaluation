@@ -1,58 +1,67 @@
-definitions:
+configuration:
+    type: object
+    required:
+        - task_configurations
+        - categories
+    properties:
+        task_configurations:
+            type: array
+            items:
+                $ref: '#/task_configuration'
+        categories:
+            type: array
+            items:
+                $ref: '#/category'
+            
+task_configuration:
+    type: object
+    required:
+        - type
+        - enabled
+    properties:
+        type:
+            type: string
+            enum: [similarity, analogy, neighborhood, outlier_detection]
+        enabled:
+            type: boolean            
 
-    configuration:
-        type: object
-        required:
-            - task_configurations
-            - tests
-        properties:
-            task_configurations:
-                type: array
-                items:
-                    $ref: '#/definitions/task_configuration'
-            tests:
-                type: array
-                items:
-                    $ref: '#/definitions/category'
-                
-    task_configuration:
-        type: object
-        required:
-            - enabled
-        properties:
-            enabled:
-                type: boolean
-    
-    category:
-        type: object
-        required:
-            - enabled
-            - tasks
-            - categories
-        properties:
-            enabled:
-                type: boolean
-            tasks:
-                type: array
-                items:
-                    $ref: '#/definitions/task'
-            categories:
-                type: array
-                items:
-                    $ref: '#/definitions/category'
-    
-    task:
-        type: object
-        required:
-            - name
-            - metric
-            - test_set
-        properties:
-            name:
-                type: string
-            metric:
-                type: string
-                enum: [cosine, euclidean]
-            test_set:
-                type: string
-                description: Path to local test-set file.
+category:
+    type: object
+    required:
+        - name
+        - enabled
+        - tasks
+        - categories
+    properties:
+        name:
+            type: string
+        enabled:
+            type: boolean
+        tasks:
+            type: array
+            items:
+                $ref: '#/task'
+        categories:
+            type: array
+            items:
+                $ref: '#/category'
+
+task:
+    type: object
+    required:
+        - name
+        - type
+        - metric
+        - test_set
+    properties:
+        name:
+            type: string
+        type:
+            type: string
+            enum: [similarity, analogy, neighborhood, outlier_detection]
+        metric:
+            type: string
+            enum: [cosine, euclidean]
+        test_set:
+            type: string
+            description: Path to local test-set file.

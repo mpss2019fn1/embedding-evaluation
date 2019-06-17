@@ -1,55 +1,70 @@
 configuration:
     task_configurations:
-        - similarity:
+        - task_configuration: 
+            type: similarity
             enabled: true
-        - analogy:
+        - task_configuration:
+            type: analogy
             enabled: true
-        - neighborhood:
+        - task_configuration:
+            type: neighborhood
             enabled: false
-        - outlier_detection:
+        - task_configuration:
+            type: outlier_detection
             enabled: true
-    tests:
-        - {{category_name_#1}}:
+    categories:
+        - category:
+            name: {{category_name_#1}}
             enabled: true
             tasks:
-                - similarity:
+                - task:
                     name: {{similarity_task_name_#1}}
+                    type: similarity
                     metric: cosine
                     test_set: {{path_to_test_set_#1}}
-                - similarity:
+                - task:
                     name: {{similarity_task_name_#2}}
+                    type: similarity
                     metric: euclidean
                     test_set: {{path_to_test_set_#2}}
-                - analogy:
+                - task:
                     name: {{analogy_task_name_#1}}
+                    type: analogy
                     metric: cosine
                     test_set: {{path_to_test_set_#3}}
             categories:
-                - {{sub_category_name_#1}}:
+                - category:
+                    name: {{sub_category_name_#1}}
                     enabled: false
                     tasks:
-                        - neighborhood:
+                        - task:
                             name: {{neighborhood_task_name_#1}}
+                            type: neighborhood
                             metric: euclidean
                             test_set: {{path_to_test_set_#4}}
                     categories:
-                - {{sub_category_name_#2}}:
+                - category:
+                    name: {{sub_category_name_#2}}
                     enabled: true
                     tasks:
-                        - outlier_detection:
+                        - task:
                             name: {{outlier_detection_task_name_#1}}
+                            type: outlier_detection
                             metric: cosine
                             test_set: {{path_to_test_set_#5}}
                     categories:
-        - {{category_name_#2}}:
+        - category:
+            name: {{category_name_#2}}
             enabled: false
             tasks:
             categories:
-                - {{sub_category_name_#3}}:
+                - category:
+                    name: {{sub_category_name_#3}}
                     enabled: true
                     tasks:
-                        - similarity:
+                        - task:
                             name: {{similarity_task_name_#3}}
+                            type: similarity
                             metric: euclidean
                             test_set: {{path_to_test_set_#6}}
                     categories:
