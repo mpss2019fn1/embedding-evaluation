@@ -1,13 +1,9 @@
 import argparse
-import logging
-import yaml
 from pathlib import Path
-from tasks import task_mapping
-from gensim_loader import VectorLoader
-from metrics import metrics
-from cli_logger import CLILogger
+
 
 # logging.basicConfig(level=logging.INFO)
+from test_collection import TestCollection
 
 
 def main(args):
@@ -16,19 +12,7 @@ def main(args):
     :param args:
     :return:
     """
-    gensim_loader = VectorLoader(args.embedding_file)
-    with open(args.task_config, 'r') as stream:
-        data_loaded = yaml.safe_load(stream)
-    tasks = [*data_loaded]
-    for task_name in tasks:
-        logging.info((f'Execute task: {task_name}'))
-        task_properties = data_loaded[task_name]
-        task_class = task_mapping[task_properties['type']]
-        source = task_properties['source']
-        with Path(source['path']).open(encoding="utf8") as f:
-            task = task_class(task_name, f, metrics[task_properties['metric']], gensim_loader, source, True)
-            with CLILogger(task):
-                print(task())
+    test_collection = TestCollection.from_test_definition(args.test_set_config)
 
 
 if __name__ == '__main__':
@@ -39,17 +23,17 @@ if __name__ == '__main__':
         help='Path to the configuration file of the test set',
         required=True
     )
-    parser.add_argument(
-        "--embedding-file",
-        type=Path,
-        help="Path to the embedding vector file",
-        required=True
-    )
-
-    parser.add_argument(
-        "--mapping-file",
-        type=Path,
-        help="Path to the file for mapping embedded entities to knowledge base entities",
-        required=True
-    )
+    # parser.add_argument(
+    #     "--embedding-file",
+    #     type=Path,
+    #     help="Path to the embedding vector file",
+    #     required=True
+    # )
+    #
+    # parser.add_argument(
+    #     "--mapping-file",
+    #     type=Path,
+    #     help="Path to the file for mapping embedded entities to knowledge base entities",
+    #     required=True
+    # )
     main(parser.parse_args())

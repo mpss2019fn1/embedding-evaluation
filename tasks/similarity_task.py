@@ -7,6 +7,11 @@ from .task import Task
 
 class SimilarityTask(Task):
 
+    @classmethod
+    def __name__(cls):
+        return "similarity"
+
+
     def compute(self, *args, **kwargs):
         our_similarities = []
         data_similarities = []
